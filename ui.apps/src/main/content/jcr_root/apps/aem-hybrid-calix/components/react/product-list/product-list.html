@@ -1,0 +1,47 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = wcmmode.edit, classAppend = 'cmp-product-list'}"></sly>
+<div class="react-component"
+     data-component="${resource.resourceType}"
+     data-component-id="${resource.name}"
+     data-resource-type="${resource.resourceType}">
+
+    <sly data-sly-test="${!wcmmode.edit && !wcmmode.preview}">
+
+    <sly data-sly-set.productsNode="${resource.products}"></sly>
+    <sly data-sly-set.hasProducts="${productsNode && productsNode.children}"></sly>
+    <section class="cmp-product-list cmp-product-list--skeleton" aria-hidden="true">
+        <span class="cmp-product-list__accent"></span>
+        <div class="cmp-product-list__header">
+            <div class="cmp-product-list__title-group">
+                <span class="cmp-product-list__eyebrow skeleton-block skeleton-text skeleton-text--w120">&nbsp;</span>
+                <div class="cmp-product-list__heading-row">
+                    <h2 class="cmp-product-list__heading skeleton-block skeleton-text skeleton-text--w220">&nbsp;</h2>
+                    <span class="cmp-product-list__count skeleton-block skeleton-text skeleton-text--w80">&nbsp;</span>
+                </div>
+            </div>
+            <div class="cmp-product-list__filters">
+                <span class="cmp-product-list__chip skeleton-block skeleton-text skeleton-text--w80">&nbsp;</span>
+                <span class="cmp-product-list__chip skeleton-block skeleton-text skeleton-text--w80">&nbsp;</span>
+            </div>
+        </div>
+        <ul class="cmp-product-list__grid">
+            <li class="cmp-product-list__item" data-sly-repeat.item="${hasProducts ? productsNode.children : [0,1,2,3,4,5]}">
+                <div class="cmp-product-card">
+                    <div class="cmp-product-card__top">
+                        <span class="cmp-product-card__badge skeleton-block skeleton-text skeleton-text--w80">&nbsp;</span>
+                        <span class="cmp-product-card__status skeleton-block"></span>
+                    </div>
+                    <div class="cmp-product-card__body">
+                        <h3 class="cmp-product-card__title skeleton-block skeleton-text skeleton-text--w160">&nbsp;</h3>
+                        <p class="cmp-product-card__description skeleton-block skeleton-text skeleton-text--100">&nbsp;</p>
+                    </div>
+                    <div class="cmp-product-card__footer">
+                        <span class="cmp-product-card__link skeleton-block skeleton-text skeleton-text--w120">&nbsp;</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    </sly>
+
+</div>

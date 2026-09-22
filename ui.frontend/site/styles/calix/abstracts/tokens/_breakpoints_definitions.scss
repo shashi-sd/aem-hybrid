@@ -1,0 +1,42 @@
+@use "sass:map";
+
+$breakpoints: (
+  xlarge: 1600px,
+  large: 992px,
+  medium: 720px,
+  small: 500px,
+  xsmall: 360px,
+);
+
+$breakpoints-map: (
+  xlarge: (
+    min-width: map-get($breakpoints, 'xlarge'),
+  ),
+  large: (
+    min-width: map-get($breakpoints, 'large'),
+  ),
+  medium: (
+    min-width: map-get($breakpoints, 'medium'),
+  ),
+  small: (
+    min-width: map-get($breakpoints, 'small'),
+  ),
+  xsmall: (
+    min-width: map-get($breakpoints, 'xsmall'),
+  ),
+  large-max: (
+    max-width: map-get($breakpoints, 'xlarge') - 1px,
+  ),
+  medium-max: (
+    max-width: map-get($breakpoints, 'large') - 1px,
+  ),
+  small-max: (
+    max-width: map-get($breakpoints, 'medium') - 1px,
+  ),
+  xsmall-max: (
+    max-width: map-get($breakpoints, 'small') - 1px,
+  ),
+  small-only:  ((min-width: map.get($breakpoints, 'small')) (max-width: map.get($breakpoints, 'medium') - 1px)),
+  medium-only: ((min-width: map.get($breakpoints, 'medium')) (max-width: map.get($breakpoints, 'large') - 1px)),
+  large-only:  ((min-width: map.get($breakpoints, 'large')) (max-width: map.get($breakpoints, 'xlarge') - 1px)),
+) !default;

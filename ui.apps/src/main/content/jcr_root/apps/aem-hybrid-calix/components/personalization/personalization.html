@@ -1,0 +1,31 @@
+<!--/*
+    ContextHub Personalization Sample
+
+    Renders a default message plus authored desktop/mobile variants.
+    The client script toggles the visible block based on a segment key
+    resolved from ContextHub or the ?segment= URL parameter.
+*/-->
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
+<sly data-sly-set.isEmpty="${!properties || !properties['jcr:title']}"/>
+<sly data-sly-call="${templates.placeholder @ isEmpty=isEmpty, classAppend='cmp-personalization'}"></sly>
+
+<section class="cmp-personalization"
+         data-sly-test="${!isEmpty}"
+         data-cmp-is="personalization"
+         data-cmp-contexthub="true"
+         data-cmp-title="${properties['jcr:title']}">
+    <div class="cmp-personalization__default" data-role="default">
+        <h3 class="cmp-personalization__title">${properties['jcr:title']}</h3>
+        <p class="cmp-personalization__message">${properties.defaultMessage || 'This demo uses ContextHub segments to swap the content below.'}</p>
+    </div>
+
+    <div class="cmp-personalization__variant" data-role="desktop-users" hidden="hidden">
+        <h4 class="cmp-personalization__variant-title">${properties.desktopTitle || 'Desktop experience'}</h4>
+        <p class="cmp-personalization__variant-message">${properties.desktopMessage || 'Desktop-specific content shown for the Desktop Users segment.'}</p>
+    </div>
+
+    <div class="cmp-personalization__variant" data-role="mobile-users" hidden="hidden">
+        <h4 class="cmp-personalization__variant-title">${properties.mobileTitle || 'Mobile experience'}</h4>
+        <p class="cmp-personalization__variant-message">${properties.mobileMessage || 'Mobile-specific content shown for the Mobile Users segment.'}</p>
+    </div>
+</section>

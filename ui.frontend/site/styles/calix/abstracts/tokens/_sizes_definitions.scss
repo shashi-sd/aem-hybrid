@@ -1,0 +1,24 @@
+
+@use "sass:map";
+@use '../rems' as *;
+
+$sizes: (
+  sideMarginDesktop: 80,
+  sideMarginTablet: 32,
+  sideMarginDefault: 20,
+  gridGapDesktop: 24,
+  gridGapTablet: 24,
+  gridGapDefault: 24,
+  wideContentWidth: 1280,
+  componentSpacingDesktop: 128,
+  componentSpcaingMobile: 72,
+  smallComponentSpacingDesktop: 64,
+  smallComponentSpacingMobile: 36
+);
+
+
+$component-spacing-desktop: map-get($sizes, componentSpacingDesktop);
+$component-spacing-mobile: map-get($sizes, componentSpcaingMobile);
+$small-component-spacing-desktop: map-get($sizes, smallComponentSpacingDesktop);
+$small-component-spacing-mobile: map-get($sizes, smallComponentSpacingMobile);
+

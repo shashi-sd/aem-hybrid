@@ -1,0 +1,137 @@
+@use 'utils/variables/color/colors' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Geist:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap');
+
+:root {
+    --color-brand-blue: #{$color-brand-blue};
+    --color-brand-blue-dark: #{$color-brand-blue-dark};
+    --color-brand-deep-blue: #{$color-brand-deep-blue};
+    --color-brand-deep-blue-dark: #{$color-brand-deep-blue-dark};
+    --color-brand-navy: #{$color-brand-navy};
+    --color-brand-orange: #{$color-brand-orange};
+
+    --color-primary: var(--color-brand-blue);
+    --color-secondary: var(--color-brand-deep-blue);
+    --color-text: var(--color-brand-navy);
+    --color-text-light: #{$color-text-light};
+    --color-bg: #{$color-white};
+    --color-bg-light: #{$color-bg-light};
+    --color-border: #{$color-border};
+    --font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --radius: 8px;
+
+    --portal-primary: #{$portal-primary};
+    --portal-primary-dark: #{$portal-primary-dark};
+    --portal-primary-soft: #{$portal-primary-soft};
+    --portal-ink: #{$portal-ink};
+    --portal-ink-strong: #{$portal-ink-strong};
+    --portal-slate: #{$portal-slate};
+    --portal-muted: #{$portal-muted};
+    --portal-border: #{$portal-border};
+    --portal-surface: #{$portal-surface};
+    --portal-teal: #{$portal-teal};
+    --portal-orange: #{$portal-orange};
+    --portal-orange-soft: #{$portal-orange-soft};
+    --portal-hero-overlay: #{$portal-hero-overlay};
+    --portal-hero-text: #{$portal-hero-text};
+    --portal-font-heading: 'Outfit', var(--font-family);
+    --portal-font-body: 'Geist', var(--font-family);
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+@keyframes skeleton-shimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+
+.skeleton-block {
+    display: block;
+    border-radius: 6px;
+    background: $color-skeleton linear-gradient(90deg, $color-skeleton 0%, $color-skeleton-highlight 50%, $color-skeleton 100%);
+    background-size: 800px 100%;
+    animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+[class*="--skeleton"] {
+    pointer-events: none;
+    user-select: none;
+
+    .skeleton-block {
+        color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        background: $color-skeleton linear-gradient(90deg, $color-skeleton 0%, $color-skeleton-highlight 50%, $color-skeleton 100%);
+        background-size: 800px 100%;
+        animation: skeleton-shimmer 1.4s ease-in-out infinite;
+    }
+
+    .skeleton-text {
+        display: inline-block;
+        max-width: 100%;
+        vertical-align: top;
+    }
+
+    .skeleton-line {
+        display: inline;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
+    svg,
+    img {
+        visibility: hidden;
+    }
+}
+
+@each $pct in 40, 60, 80, 100 {
+    .skeleton-text--#{$pct} { width: #{$pct * 1%}; }
+}
+
+@each $px in 32, 80, 120, 160, 220, 320 {
+    .skeleton-text--w#{$px} { width: #{$px}px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skeleton-block,
+    [class*="--skeleton"] .skeleton-block { animation: none; }
+}

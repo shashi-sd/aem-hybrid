@@ -1,0 +1,66 @@
+<sly  data-sly-use.model="com.aem.hybrid.calix.core.models.site.NavigationPanel"
+      data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
+      data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+      data-sly-set.empty="${model.empty}">
+</sly>
+<div class="cmp-accordion__header">
+    <button
+            id="accordion-${component.id}-item-button"
+            class="cmp-accordion__button"
+            type="button"
+            aria-controls="accordion-${component.id}-item-panel"
+            data-cmp-hook-accordion="button">
+        <span class="cmp-accordion__title">${model.panelTitle @ context='text'}</span>
+        <span class="cmp-accordion__icon"></span>
+    </button>
+</div>
+<div class="cmp-accordion__panel ${wcmmode.edit || wcmmode.design ? 'authoring-mode' : ''}"
+     data-cmp-hook-accordion="panel"
+     id="accordion-${component.id}-item-panel"
+     role="region"
+     aria-labelledby="accordion-${component.id}-item-button"
+     aria-hidden="true">
+    <div class="cmp-accordion__panel-inner">
+        <div class="cmp-accordion__panel-contents">
+            <div  data-sly-set.panels="${model.panels}"
+                  data-sly-test="${model.panels}"
+                  class="cmp-navigation-section-simple"
+                  data-calix-cmp-is="navigation-section-simple"
+            >
+                <div class="cmp-navigation-section-simple__wrapper">
+                    <section class="cmp-navigation-section-simple__section cmp-navigation-section-simple__links"
+                    >
+                        <div class="cmp-navigation-section-simple__linkList">
+                            <div data-sly-repeat="${panels}"
+                                 class="cmp-navigation-section-simple__linkListCol">
+                                <div data-sly-test="${item.heading}"
+                                     class="cmp-navigation-section-simple__linkListCol__heading">${item.heading @ context='text'}</div>
+                                <ul data-sly-set.links="${item.links}"
+                                    class="cmp-navigation-section-simple__linkListCol__list">
+                                    <li data-sly-repeat.link="${links}"
+                                        class="cmp-navigation-section-simple__linkListCol__list-item">
+                                        <a href="${link.url @ context='uri'}" target="${link.target}">${link.label @ context='text'}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div data-sly-test="${model.bottomLinks}"
+                             class="cmp-navigation-section-simple__footerLinks">
+                            <a data-sly-repeat.item="${model.bottomLinks}"
+                                href="${item.url @ context='uri'}" target="${item.target}">${item.label @ context='text'}</a>
+                        </div>
+                    </section>
+                    <section class="cmp-navigation-section-simple__section cmp-navigation-section-simple__feature">
+                        <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
+                             data-sly-test=${fragment.configured}
+                             data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
+                             data-sly-resource="${@path=fragment.localizedFragmentVariationPath, selectors=selector, wcmmode='disabled'}"
+                             id="${fragment.id}"
+                             class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}"></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<sly data-sly-call="${templates.placeholder @ isEmpty = empty, classAppend='cmp-navigation-panel'}"></sly>

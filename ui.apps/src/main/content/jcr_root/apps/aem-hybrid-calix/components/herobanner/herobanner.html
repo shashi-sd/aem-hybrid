@@ -1,0 +1,52 @@
+<!--/*
+    Hero Banner — HTL component (server-rendered)
+    Figma: "Redesign login page" › calix-home-dashboard-redesign › featured-insights-section (5:27)
+
+    Pure HTL: everything is authored and rendered server-side (SEO/cacheable).
+    Product detail pages use the React "Product Hero" (react/product-hero) instead,
+    because that hero carries live, per-user state (Add to My Products).
+
+    Styles: ui.frontend/src/site/components/herobanner/herobanner.scss
+*/-->
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.hero="com.aem.hybrid.calix.core.models.HeroBannerModel"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !hero.title, classAppend = 'cmp-herobanner'}"></sly>
+
+<section class="cmp-herobanner reveal-on-scroll" data-sly-test="${hero.title}">
+    <div class="cmp-herobanner__content">
+        <span class="cmp-herobanner__eyebrow" data-sly-test="${hero.eyebrow}">${hero.eyebrow}</span>
+
+        <div class="cmp-herobanner__title-group">
+            <h1 class="cmp-herobanner__title">${hero.title}</h1>
+            <p class="cmp-herobanner__subtitle" data-sly-test="${hero.subtitle}">${hero.subtitle}</p>
+            <p class="cmp-herobanner__description" data-sly-test="${hero.description}">${hero.description}</p>
+        </div>
+
+        <div class="cmp-herobanner__actions"
+             data-sly-test="${(hero.ctaText && hero.ctaLink) || (hero.secondaryCtaText && hero.secondaryCtaLink)}">
+            <a class="cmp-herobanner__cta cmp-herobanner__cta--primary"
+               data-sly-test="${hero.ctaText && hero.ctaLink}"
+               href="${hero.ctaLink @ extension='html'}">${hero.ctaText}</a>
+            <a class="cmp-herobanner__cta cmp-herobanner__cta--secondary"
+               data-sly-test="${hero.secondaryCtaText && hero.secondaryCtaLink}"
+               href="${hero.secondaryCtaLink @ extension='html'}">${hero.secondaryCtaText}</a>
+        </div>
+    </div>
+
+    <!-- Always rendered so the split layout holds; without an authored image the
+         panel falls back to a navy brand gradient (see herobanner.scss). -->
+    <div class="cmp-herobanner__media">
+        <img class="cmp-herobanner__image"
+             data-sly-test="${hero.backgroundImage}"
+             src="${hero.backgroundImage}"
+             alt="${hero.imageAlt}"
+             loading="eager"
+             onerror="this.remove()"/>
+        <div class="cmp-herobanner__media-overlay" aria-hidden="true"></div>
+        <span class="cmp-herobanner__media-badge" data-sly-test="${hero.imageBadge}">${hero.imageBadge}</span>
+        <div class="cmp-herobanner__media-caption" data-sly-test="${hero.imageCaptionTitle || hero.imageCaptionSubtitle}">
+            <p class="cmp-herobanner__media-caption-title" data-sly-test="${hero.imageCaptionTitle}">${hero.imageCaptionTitle}</p>
+            <p class="cmp-herobanner__media-caption-subtitle" data-sly-test="${hero.imageCaptionSubtitle}">${hero.imageCaptionSubtitle}</p>
+        </div>
+    </div>
+</section>

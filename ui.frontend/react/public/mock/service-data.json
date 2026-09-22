@@ -1,0 +1,129 @@
+{
+  "components": [
+    {
+      "resourceType": "aem-hybrid-calix/components/react/product-hero",
+      "componentId": "product_hero",
+      "order": 5,
+      "isReact": true,
+      "data": {
+        "productPath": "/content/aem-hybrid-calix/us/en/products/e7-2-system",
+        "isFavorite": false,
+        "userId": "jdoe",
+        "endpoint": "/bin/aem-hybrid-calix/favorite"
+      }
+    },
+    {
+      "resourceType": "aem-hybrid-calix/components/react/profile-card",
+      "componentId": "profilecard",
+      "order": 1,
+      "isReact": true,
+      "data": {
+        "user": {
+          "userId": "jdoe",
+          "firstName": "Jane",
+          "lastName": "Doe",
+          "email": "jane.doe@example.com",
+          "accountSFid": "0015000000XyZ12",
+          "role": "Administrator",
+          "avatar": ""
+        }
+      }
+    },
+    {
+      "resourceType": "aem-hybrid-calix/components/react/product-list",
+      "componentId": "productlist",
+      "order": 2,
+      "isReact": true,
+      "data": {
+        "products": [
+          {
+            "id": "/content/aem-hybrid-calix/us/en/products/gp-1100",
+            "isSelected": true
+          },
+          {
+            "id": "/content/aem-hybrid-calix/us/en/products/e7-2",
+            "isSelected": true,
+            "isHighlighted": true
+          },
+          {
+            "id": "/content/aem-hybrid-calix/us/en/products/gs4220e",
+            "isSelected": false
+          },
+          {
+            "id": "/content/aem-hybrid-calix/us/en/products/commandiq",
+            "isSelected": true
+          }
+        ]
+      }
+    },
+    {
+      "resourceType": "aem-hybrid-calix/components/react/product-favorite",
+      "componentId": "productfavorite",
+      "order": 3,
+      "isReact": true,
+      "data": {
+        "productPath": "/content/aem-hybrid-calix/us/en/products/gp-1100",
+        "isFavorite": false,
+        "userId": "jdoe",
+        "endpoint": "/bin/aem-hybrid-calix/favorite"
+      }
+    },
+    {
+      "resourceType": "aem-hybrid-calix/components/react/network-dashboard",
+      "componentId": "networkdashboard",
+      "order": 4,
+      "isReact": true,
+      "data": {
+        "health": "healthy",
+        "healthLabel": "All systems operational",
+        "lastUpdated": "2026-09-11T10:30:00Z",
+        "kpis": {
+          "uptime": {
+            "value": 99.98,
+            "status": "good"
+          },
+          "subscribers": {
+            "value": 18423,
+            "status": "good"
+          },
+          "bandwidth": {
+            "value": 72,
+            "status": "warn"
+          },
+          "alerts": {
+            "value": 3,
+            "status": "warn"
+          }
+        },
+        "alerts": [
+          {
+            "severity": "warning",
+            "title": "High utilisation on OLT-7",
+            "site": "Denver POP",
+            "age": "12m ago"
+          },
+          {
+            "severity": "info",
+            "title": "Firmware rollout 24.2 completed",
+            "site": "All POPs",
+            "age": "40m ago"
+          }
+        ],
+        "trend": [
+          42,
+          48,
+          45,
+          52,
+          60,
+          58,
+          63,
+          70,
+          66,
+          72,
+          69,
+          74
+        ]
+      }
+    }
+  ]
+}

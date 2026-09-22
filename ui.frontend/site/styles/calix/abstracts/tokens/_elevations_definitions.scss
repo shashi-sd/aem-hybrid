@@ -1,0 +1,9 @@
+$elevations-map: (
+  xs: (0px 1px 2px 0px rgba(16, 24, 40, 0.05)),
+  sm: (0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.1)),
+  md: (0px 2px 4px -2px rgba(16, 24, 40, 0.06), 0px 4px 8px -2px rgba(16, 24, 40, 0.1)),
+  lg: (0px 4px 20px 0px rgba(0, 0, 0, 0.08)),
+  xl: (0px 4px 20px 0px rgba(16, 24, 40, 0.08)),
+  2xl: (0px 4px 20px 0px rgba(16, 24, 40, 0.15)),
+  3xl: (0px 4px 8px 0px rgba(16, 24, 40, 0.2)),
+);

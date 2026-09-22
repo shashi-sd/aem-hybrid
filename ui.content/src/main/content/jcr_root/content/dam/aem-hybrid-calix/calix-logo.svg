@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-labelledby="calixLogoTitle">
+    <title id="calixLogoTitle">Calix</title>
+    <g fill="#1231D6">
+        <!-- Stylized "C" mark: two arcs with a gap on the right, orange triangle fills the gap -->
+        <path d="M150 10
+                 C 70 10 5 75 5 150
+                 C 5 225 70 290 150 290
+                 C 195 290 235 270 260 238
+                 L 205 195
+                 C 188 217 165 230 150 230
+                 C 105 230 68 194 68 150
+                 C 68 106 105 70 150 70
+                 C 165 70 188 83 205 105
+                 L 260 62
+                 C 235 30 195 10 150 10 Z"/>
+    </g>
+    <g fill="#FF7A00">
+        <path d="M175 150 L255 105 L255 195 Z"/>
+    </g>
+    <g fill="#1231D6">
+        <!-- Wordmark: Calix -->
+        <text x="330" y="205" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="190">Calix</text>
+    </g>
+</svg>

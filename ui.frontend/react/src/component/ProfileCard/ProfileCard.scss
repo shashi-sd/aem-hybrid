@@ -1,0 +1,196 @@
+@use "../../../../site/styles/utils/variables/color/colors" as *;
+
+$pc2-font-heading: var(--portal-font-heading, 'Outfit', sans-serif);
+$pc2-font-body: var(--portal-font-body, 'Geist', sans-serif);
+
+.cmp-profile-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 48px 0 32px;
+  font-family: $pc2-font-body;
+
+  &__accent {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc((100vw - 152px) / 4);
+    height: 8px;
+    border-radius: 0;
+    background: $color-brand-orange;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 100vw;
+    height: 1px;
+    transform: translateX(-50%);
+    background: var(--color-gray-2, #{$color-gray-2});
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  &__description {
+    margin: 0;
+    font-family: 'DM Sans', var(--font-family, sans-serif);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: $color-black;
+  }
+
+  &__eyebrow {
+    font-family: 'DM Sans', var(--font-family, sans-serif);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: $color-brand-orange;
+  }
+
+  &__greeting {
+    margin: 0;
+    font-family: 'DM Sans', var(--font-family, sans-serif);
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: $color-black;
+    overflow-wrap: anywhere;
+  }
+
+  &__email {
+    font-family: 'DM Sans', var(--font-family, sans-serif);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: $color-gray-2;
+    overflow-wrap: anywhere;
+  }
+
+  &__favorites {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid $portal-primary;
+    border-radius: 99px;
+    background: $color-white;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: normal;
+    color: $portal-primary;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s;
+  }
+
+  a.cmp-profile-card__favorites {
+    &:hover {
+      background: $portal-primary-soft;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $portal-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__favorites-icon {
+    display: flex;
+    width: 14px;
+    height: 14px;
+
+    svg {
+      display: block;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    &__eyebrow {
+      font-size: 16px;
+    }
+
+    &__description {
+      font-size: 22px;
+    }
+
+    &__greeting {
+      font-size: 42px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+    &__accent {
+      width: calc((100vw - 184px) / 6);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    padding: 72px 0 48px;
+
+    &__accent {
+      width: calc((100vw - 344px) / 12);
+    }
+  }
+
+  @media (min-width: 1440px) {
+    &__accent {
+      width: 106px;
+    }
+  }
+
+  &--skeleton {
+    .skeleton-profile-card__eyebrow {
+      width: 160px;
+      height: 18px;
+    }
+
+    .skeleton-profile-card__greeting {
+      width: 320px;
+      height: 60px;
+      margin-top: 4px;
+    }
+
+    .skeleton-profile-card__chip {
+      width: 150px;
+      height: 40px;
+      border-radius: 99px;
+    }
+
+    @media (max-width: 1023px) {
+      .skeleton-profile-card__greeting {
+        height: 44px;
+      }
+    }
+  }
+}
+
+.profile-card {
+margin-bottom:50px
+}

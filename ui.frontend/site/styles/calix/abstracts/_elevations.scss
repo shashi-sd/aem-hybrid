@@ -1,0 +1,10 @@
+@import './tokens/elevations_definitions';
+
+@function get-elevation($level) {
+    @if map-has-key($elevations-map, $level) {
+        @return #{map-get($elevations-map, $level)};
+    } @else {
+        @warn 'Unfortunately, no value could be retrieved from #{$level}. Available elevations are: #{map-keys($elevations-map)}.';
+        @return '';
+    }
+}

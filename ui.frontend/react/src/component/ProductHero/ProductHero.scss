@@ -1,0 +1,249 @@
+@use "../../../../site/styles/utils/variables/color/colors" as *;
+
+$ph-font-heading: var(--portal-font-heading, 'Outfit', sans-serif);
+$ph-font-body: var(--portal-font-body, 'Geist', sans-serif);
+
+.cmp-product-hero {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding: 56px 0 96px;
+  background: $color-white;
+  font-family: $ph-font-body;
+  box-sizing: border-box;
+
+  &__content {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    min-width: 0;
+  }
+
+  &__breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    color: $portal-muted;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: $portal-primary;
+      }
+    }
+
+    &--active {
+      font-weight: 600;
+      color: $portal-primary;
+    }
+  }
+
+  &__breadcrumb-separator {
+    display: flex;
+    flex: 0 0 12px;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+
+    svg {
+      display: block;
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &__title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  &__eyebrow {
+    padding: 6px 12px;
+    border-radius: 100px;
+    background: $portal-primary-soft;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    color: $portal-primary;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: $ph-font-heading;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: $portal-ink;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: $portal-slate;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border: 1.5px solid $portal-primary;
+    border-radius: 8px;
+    background: $portal-primary;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    color: $color-white;
+    text-decoration: none;
+    transition: background-color 0.15s, border-color 0.15s;
+
+    &:hover {
+      border-color: $portal-primary-dark;
+      background: $portal-primary-dark;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $portal-primary;
+      outline-offset: 2px;
+    }
+  }
+
+  &__cta-icon {
+    display: flex;
+    flex: 0 0 16px;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+
+    svg {
+      display: block;
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  &__media {
+    position: relative;
+    flex: 0 1 560px;
+    max-width: 560px;
+    height: 360px;
+    overflow: hidden;
+    border: 1px solid $portal-border;
+    border-radius: 20px;
+    background: $portal-surface;
+    box-sizing: border-box;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  &__media-badge {
+    position: absolute;
+    top: 23px;
+    left: 23px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    color: $color-white;
+  }
+
+  &__media-caption {
+    position: absolute;
+    right: 23px;
+    bottom: 23px;
+    left: 23px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__media-caption-title {
+    margin: 0;
+    font-family: $ph-font-heading;
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-white;
+  }
+
+  &__media-caption-subtitle {
+    margin: 0;
+    font-size: 13px;
+    color: $portal-hero-text;
+  }
+
+}
+
+@media (max-width: 1024px) {
+  .cmp-product-hero {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 40px 0;
+
+    &__media {
+      flex-basis: auto;
+      max-width: none;
+      height: auto;
+      aspect-ratio: 14 / 9;
+    }
+
+    &__title {
+      font-size: 36px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .cmp-product-hero {
+    &__title {
+      font-size: 30px;
+    }
+
+    &__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+}

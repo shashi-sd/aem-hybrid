@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2026-09-10T17:58:14.652+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/aem-hybrid-calix/settings/wcm/templates/page-content"
+        jcr:description="Compact temperature-hardened remote OLT for outside plant deployment."
+        jcr:primaryType="cq:PageContent"
+        jcr:title="E3-2 System"
+        sling:resourceType="aem-hybrid-calix/components/page"
+        pageTitle="E3-2 System">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aem-hybrid-calix/components/container"
+            layout="responsiveGrid">
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aem-hybrid-calix/components/container"
+                layout="responsiveGrid">
+                <container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aem-hybrid-calix/components/container"
+                    layout="responsiveGrid">
+                    <product_hero
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="aem-hybrid-calix/components/react/product-hero"
+                        addLabel="Add to My Products"
+                        breadcrumbHomeLabel="Portal"
+                        ctaIcon="download"
+                        ctaLink="/content/aem-hybrid-calix/us/en/products/calix-cloud"
+                        ctaText="Access Calix Cloud Dashboard"
+                        description="The E3-2 brings distributed access architecture to hard-to-reach subscribers."
+                        eyebrow="Aggregator"
+                        image="https://www.calix.com/adobe/dynamicmedia/deliver/dm-aid--db7f6ecd-584d-4b6d-905e-51abb45b7213/systems-e9-2.png?width=960&amp;quality=85&amp;preferwebp=true"
+                        loginMessage="Please log in to save products"
+                        removeLabel="In My Products"
+                        showBreadcrumbs="{Boolean}true"
+                        showFavorite="{Boolean}true"/>
+                </container>
+            </container>
+        </root>
+    </jcr:content>
+</jcr:root>

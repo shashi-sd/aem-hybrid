@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2026-09-11T20:24:52.633+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/aem-hybrid-calix/settings/wcm/templates/page-content"
+        jcr:description="Legacy DSL and MSAP platforms for copper-based access."
+        jcr:primaryType="cq:PageContent"
+        jcr:title="E3, E5 Systems"
+        sling:resourceType="aem-hybrid-calix/components/page"
+        pageTitle="E3, E5 Systems">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aem-hybrid-calix/components/container"
+            layout="responsiveGrid">
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aem-hybrid-calix/components/container"
+                layout="responsiveGrid">
+                <container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aem-hybrid-calix/components/container"
+                    layout="responsiveGrid">
+                    <product_hero
+                        jcr:lastModified="{Date}2026-09-11T20:24:52.628+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="aem-hybrid-calix/components/react/product-hero"
+                        addLabel="Add to My Products"
+                        breadcrumbHomeLabel="Portal"
+                        ctaIcon="download"
+                        ctaLink="/content/aem-hybrid-calix/us/en/products/calix-cloud"
+                        ctaText="Access Calix Cloud Dashboard"
+                        description="Reliable copper-side platforms that bridge to next-gen fiber."
+                        eyebrow="Ethernet CPE"
+                        image="https://www.calix.com/adobe/dynamicmedia/deliver/dm-aid--db7f6ecd-584d-4b6d-905e-51abb45b7213/systems-e9-2.png?width=960&amp;quality=85&amp;preferwebp=true"
+                        loginMessage="Please log in to save products"
+                        removeLabel="In My Products"
+                        showBreadcrumbs="{Boolean}true"
+                        showFavorite="{Boolean}true"/>
+                </container>
+            </container>
+        </root>
+    </jcr:content>
+</jcr:root>

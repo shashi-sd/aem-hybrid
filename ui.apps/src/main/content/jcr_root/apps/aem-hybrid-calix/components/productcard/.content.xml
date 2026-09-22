@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Component"
+    jcr:title="Product Card (Hybrid React)"
+    jcr:description="A product card component using Hybrid CMS pattern - static product info from CMS, live pricing from API"
+    componentGroup="AEM Hybrid Calix - React"/>

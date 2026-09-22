@@ -1,0 +1,16 @@
+#
+# This file contains the cache rules, and can be customized.
+#
+# By default, it includes the default rules.
+#
+
+$include "./default_rules.any"
+
+# Never cache the per-visitor current-user-info endpoint used to hydrate
+# the userauthcontrol component client-side.
+/0100 {
+	/glob "/bin/aem-hybrid-calix/userinfo.json"
+	/type "deny"
+}
+
+

@@ -1,0 +1,56 @@
+@use "sass:map";
+@use "sass:meta";
+@use "sass:list";
+
+@import './tokens/breakpoints_definitions';
+
+@mixin breakpoint($breakpoint, $isContainer: false, $containerName: false, $mediaFallback: false) {
+    @if map-has-key($breakpoints-map, $breakpoint) {
+      $breakpoint-item: map.get($breakpoints-map, $breakpoint);
+      $query: '';
+  
+      @if  type-of($breakpoint-item) == 'list' {
+        @for $i from 1 through length($breakpoint-item) {
+          @if $i > 1 {
+            $query: $query + ' and ';
+          }
+  
+          $query: $query + #{meta.inspect(list.nth($breakpoint-item, $i))};
+        }
+  
+        $query: #{'(' + $query + ')'};
+      } @else {
+        $query: #{meta.inspect($breakpoint-item)};
+      }
+  
+      @if  $isContainer or $containerName {
+        @if  $containerName {
+          @container #{$containerName} #{$query} {
+            @content;
+          }
+        } @else {
+          @container #{$query} {
+            @content;
+          }
+        }
+  
+        @if  $mediaFallback {
+          @supports not (container-type: inline-size) {
+            @media #{$query} {
+              @content;
+            }
+          }
+        }
+      } @else {
+        @media #{$query} {
+          @content;
+        }
+      }
+  
+    }
+  
+    @else {
+      @warn 'Unfortunately, no value could be retrieved from #{$breakpoint}. Available breakpoints are: #{map-keys($breakpoints-map)}.';
+    }
+  }
+  

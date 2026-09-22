@@ -1,0 +1,23 @@
+<div data-sly-use.header="com.aem.hybrid.calix.core.models.site.HeaderModel"
+     class="cmp-header"
+     data-calix-cmp-is="header">
+    <div class="cmp-header__wrapper">
+
+        <div data-sly-resource="${'utilitynav' @ resourceType='aem-hybrid-calix/components/utilitynav'}"
+             class="cmp-header__util-nav"></div>
+
+        <div class="cmp-header__menu-bar">
+            <div class="cmp-header__logo">
+                <a href="${header.homeUrl @ context='uri'}" aria-label="${header.accessibilityLabel}">
+                    <img src="${header.logo @ context='uri'}" alt="${header.alt}"
+                         aspect-ratio="${header.aspectRatio}"/>
+                </a>
+            </div>
+            <div class="cmp-header__nav">
+                <div class="navigation cmp-calix-navigation">
+                    <sly data-sly-resource="${'navigation' @ resourceType='aem-hybrid-calix/components/navigation'}"></sly>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

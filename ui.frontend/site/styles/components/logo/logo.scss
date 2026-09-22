@@ -1,0 +1,35 @@
+@use '../../utils/variables/color/colors' as *;
+
+.cmp-logo {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    padding: 8px 0;
+
+    &:hover {
+        opacity: 0.85;
+        text-decoration: none;
+    }
+
+    &:focus {
+        outline: 2px solid $color-focus;
+        outline-offset: 4px;
+        border-radius: 4px;
+    }
+}
+
+.cmp-logo__image {
+    display: block;
+    height: 30px;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .cmp-logo__image {
+        height: 24px;
+    }
+}
+

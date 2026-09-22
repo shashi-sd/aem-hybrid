@@ -1,0 +1,7 @@
+{
+    "scheduler.expression": "0 0 2 * * ?",
+    "scheduler.concurrent": false,
+    "searchPaths": [
+        "/content/aem-hybrid-calix"
+    ]
+}

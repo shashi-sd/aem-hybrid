@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" jcr:primaryType="nt:unstructured" jcr:title="Product Hero" sling:resourceType="cq/gui/components/authoring/dialog">
+    <content jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/tabs" maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <content jcr:primaryType="nt:unstructured" jcr:title="Content" sling:resourceType="granite/ui/components/coral/foundation/container" margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <eyebrow jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Badge" name="./eyebrow" emptyText="Enterprise Access Node"/>
+                                    <title jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Title" name="./title" emptyText="Defaults to the page title"/>
+                                    <description jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textarea" fieldLabel="Description" name="./description"/>
+                                    <showBreadcrumbs jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/checkbox" name="./showBreadcrumbs" text="Show breadcrumbs" fieldDescription="Built from the page hierarchy." value="true" uncheckedValue="false" checked="{Boolean}true"/>
+                                    <showBreadcrumbsTypeHint jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/hidden" name="./showBreadcrumbs@TypeHint" value="Boolean"/>
+                                    <breadcrumbStartLevel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/numberfield" fieldLabel="Breadcrumb Start Level" name="./breadcrumbStartLevel" min="0" max="10" fieldDescription="3 = /content/aem-hybrid-calix/us/en" emptyText="3"/>
+                                    <breadcrumbHomeLabel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="First Breadcrumb Label" name="./breadcrumbHomeLabel" emptyText="Portal" fieldDescription="Overrides the first breadcrumb title."/>
+                                </items>
+                            </column>
+                        </items>
+                    </content>
+                    <actions jcr:primaryType="nt:unstructured" jcr:title="Actions" sling:resourceType="granite/ui/components/coral/foundation/container" margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <showFavorite jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/checkbox" name="./showFavorite" text="Show &quot;Add to My Products&quot;" fieldDescription="Live favorite state for the logged-in user." value="true" uncheckedValue="false" checked="{Boolean}true"/>
+                                    <showFavoriteTypeHint jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/hidden" name="./showFavorite@TypeHint" value="Boolean"/>
+                                    <addLabel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Add Label" name="./addLabel" emptyText="Add to My Products"/>
+                                    <removeLabel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Saved Label" name="./removeLabel" emptyText="In My Products"/>
+                                    <loginMessage jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Logged-out Message" name="./loginMessage" emptyText="Please log in to save products"/>
+                                    <ctaText jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Primary CTA Text" name="./ctaText" emptyText="Access Calix Cloud Dashboard"/>
+                                    <ctaLink jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="Primary CTA Link" name="./ctaLink" rootPath="/content"/>
+                                    <ctaIcon jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/select" fieldLabel="Primary CTA Icon" name="./ctaIcon">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <none jcr:primaryType="nt:unstructured" text="None" value="none"/>
+                                            <download jcr:primaryType="nt:unstructured" text="Cloud download" value="download" selected="{Boolean}true"/>
+                                        </items>
+                                    </ctaIcon>
+                                </items>
+                            </column>
+                        </items>
+                    </actions>
+                    <media jcr:primaryType="nt:unstructured" jcr:title="Media" sling:resourceType="granite/ui/components/coral/foundation/container" margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <image jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="Image" name="./image" rootPath="/content/dam"/>
+                                    <imageAlt jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Image Alt Text" name="./imageAlt"/>
+                                    <imageBadge jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Image Badge" name="./imageBadge" emptyText="2RU Compact Hardware"/>
+                                    <imageCaptionTitle jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Caption Title" name="./imageCaptionTitle"/>
+                                    <imageCaptionSubtitle jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Caption Subtitle" name="./imageCaptionSubtitle"/>
+                                </items>
+                            </column>
+                        </items>
+                    </media>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

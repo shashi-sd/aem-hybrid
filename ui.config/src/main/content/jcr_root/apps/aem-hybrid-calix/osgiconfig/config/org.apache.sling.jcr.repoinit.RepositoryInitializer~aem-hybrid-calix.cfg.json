@@ -1,0 +1,10 @@
+{
+    "scripts": [
+        "create path (sling:OrderedFolder) /content/dam/aem-hybrid-calix",
+        "create path (nt:unstructured) /content/dam/aem-hybrid-calix/jcr:content",
+        "set properties on /content/dam/aem-hybrid-calix/jcr:content\n  set cq:conf{String} to /conf/aem-hybrid-calix\n  set jcr:title{String} to \"AEM Hybrid Calix\"\nend",
+        "# --- AEM public read access for the site ---\n# All site content, DAM assets, and experience fragments are publicly\n# readable. No deny ACEs are set.\ncreate group site-members with path /home/groups/aem-hybrid-calix\nset ACL for everyone\n    allow jcr:read on /content/aem-hybrid-calix\n    allow jcr:read on /content/aem-hybrid-calix/us/en\n    allow jcr:read on /content/aem-hybrid-calix/us/en/login\n    allow jcr:read on /content/experience-fragments/aem-hybrid-calix\n    allow jcr:read on /content/dam/aem-hybrid-calix\n    allow jcr:read on /conf/aem-hybrid-calix\n    allow jcr:read on /apps/aem-hybrid-calix\nend\nset ACL for site-members\n    allow jcr:read on /content/aem-hybrid-calix/us/en\nend"
+    ]
+}
+
+

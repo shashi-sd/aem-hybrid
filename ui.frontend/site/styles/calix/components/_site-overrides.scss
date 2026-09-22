@@ -1,0 +1,138 @@
+@use '../abstracts' as *;
+@use '../../utils/variables/color/colors' as *;
+
+:root {
+    --site-max-width: #{rem(1280)};
+    --site-gutter: #{rem(20)};
+    --site-gutter-desktop: max(#{rem(80)}, calc((100% - #{rem(1280)}) / 2));
+
+    @include breakpoint(medium) {
+        --site-gutter: #{rem(32)};
+    }
+    @include breakpoint(large) {
+        --site-gutter: #{rem(80)};
+    }
+}
+
+.cmp-header,
+.cmp-footer {
+    --color-calix-blue: var(--portal-primary, #{$portal-primary});
+    --color-dark-blue: var(--portal-primary-dark, #{$portal-primary-dark});
+    --gradient-medium-blue-to-white-0-deg: var(--portal-surface, #{$portal-surface});
+}
+
+.cmp-experiencefragment--header,
+.cmp-experiencefragment--footer {
+    > .xf-content-height,
+    .cmp-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.experiencefragment:has(> .cmp-experiencefragment--header) {
+    z-index: 20;
+    @include breakpoint(medium-max) {
+        position: sticky;
+        top: 0;
+    }
+    @include breakpoint(large) {
+        position: relative;
+    }
+}
+
+.cmp-experiencefragment--header {
+    background: var(--color-white);
+    font-family: $font-reg;
+}
+
+.cmp-experiencefragment--footer {
+    font-family: $font-reg;
+}
+
+.cmp-experiencefragment .root.container,
+.cmp-experiencefragment .root.container > .aem-Grid {
+    display: block;
+    min-height: 0;
+}
+
+.cmp-header,
+.cmp-footer {
+    ul,
+    ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.cmp-utility-nav {
+    &__login {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        margin-left: 0;
+
+        @include breakpoint(medium-max) {
+            display: none;
+        }
+    }
+
+    &__link {
+        @include get-font(t8);
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .cmp-auth-control {
+        gap: rem(16);
+    }
+
+    .cmp-auth-control__user,
+    .cmp-auth-control__btn,
+    .cmp-auth-control__btn:hover,
+    .cmp-auth-control__btn:focus-visible {
+        @include get-font(t8);
+        color: var(--color-white);
+        background: transparent;
+        text-decoration: none;
+    }
+
+    .cmp-auth-control__btn:hover span {
+        text-decoration: underline;
+    }
+
+    .cmp-auth-control__btn:focus-visible {
+        outline: 2px solid var(--color-white);
+        outline-offset: rem(2);
+    }
+
+    &__menuToggle .cmp-button {
+        display: flex;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+
+    &__menuToggle .cmp-button__icon {
+        display: block;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+    }
+}
+
+.cmp-footer__logo img {
+    display: block;
+    height: auto;
+}
+
+.cmp-footer #teconsent {
+    display: none !important;
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" jcr:primaryType="nt:unstructured" jcr:title="Login" sling:resourceType="cq/gui/components/authoring/dialog">
+    <content jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/tabs" maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <signin jcr:primaryType="nt:unstructured" jcr:title="Sign-in card" sling:resourceType="granite/ui/components/coral/foundation/container" margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <cardTitle jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Card Title" name="./cardTitle" emptyText="Sign in — AEM Hybrid Calix"/>
+                                    <title jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Portal Tag" name="./title" emptyText="Calix Portal"/>
+                                    <line1 jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Welcome Text" name="./line1" emptyText="Welcome to the Calix insider portal"/>
+                                    <usernameLabel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Username Label" name="./usernameLabel" emptyText="Username"/>
+                                    <passwordLabel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Password Label" name="./passwordLabel" emptyText="Password"/>
+                                    <hideRememberMe jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/checkbox" name="./hideRememberMe" text="Hide &quot;Remember me&quot;" value="{Boolean}true" uncheckedValue="{Boolean}false"/>
+                                    <rememberLabel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Remember Me Label" name="./rememberLabel" emptyText="Remember me"/>
+                                    <forgotLabel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Forgot Password Label" name="./forgotLabel" emptyText="Forgot password?"/>
+                                    <forgotLink jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="Forgot Password Link" fieldDescription="Hidden when empty." name="./forgotLink" rootPath="/content"/>
+                                    <submitLabel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Button Label" name="./submitLabel" emptyText="Log In"/>
+                                    <ssoLabel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="SSO Button Label" name="./ssoLabel" emptyText="Sign in with Single Sign-On"/>
+                                    <ssoLink jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="SSO Link" fieldDescription="SSO entry point (page path or IdP URL). Button hidden when empty." name="./ssoLink" rootPath="/content"/>
+                                    <helpText jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Help Text" name="./helpText" emptyText="Secured by Calix SSO. Need help?"/>
+                                    <supportLabel jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Support Link Label" name="./supportLabel" emptyText="Contact Support"/>
+                                    <supportLink jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="Support Link" fieldDescription="Hidden when empty." name="./supportLink" rootPath="/content"/>
+                                    <redirectPath jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="Post-Login Redirect" fieldDescription="Page users are sent to after successful login." name="./redirectPath" rootPath="/content"/>
+                                </items>
+                            </column>
+                        </items>
+                    </signin>
+                    <brand jcr:primaryType="nt:unstructured" jcr:title="Brand panel" sling:resourceType="granite/ui/components/coral/foundation/container" margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <imageSrc jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="Background Image" fieldDescription="Full-bleed image behind the brand panel (dark overlay is applied)." name="./imageSrc" rootPath="/content/dam"/>
+                                    <imageAlt jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Image Alt Text" name="./imageAlt" emptyText="Leave empty for decorative image"/>
+                                    <eyebrow jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Eyebrow" name="./eyebrow" emptyText="Enterprise Broadband Platform"/>
+                                    <headline jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Headline" name="./headline" emptyText="Simplify. Excitate."/>
+                                    <headlineHighlight jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Headline Highlight" name="./headlineHighlight" emptyText="Grow."/>
+                                    <brandText jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textarea" fieldLabel="Description" name="./brandText"/>
+                                    <copyright jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Copyright" name="./copyright" emptyText="© 2026 Calix Inc. All rights reserved."/>
+                                </items>
+                            </column>
+                        </items>
+                    </brand>
+                    <links jcr:primaryType="nt:unstructured" jcr:title="Links" sling:resourceType="granite/ui/components/coral/foundation/container" margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <utilityLinks jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/multifield" composite="{Boolean}true" fieldLabel="Utility Navigation (top right)">
+                                        <field jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container" name="./utilityLinks">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <label jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Label" name="./label" required="{Boolean}true"/>
+                                                <link jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="Link" name="./link" rootPath="/content" required="{Boolean}true"/>
+                                            </items>
+                                        </field>
+                                    </utilityLinks>
+                                    <footerLinks jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/multifield" composite="{Boolean}true" fieldLabel="Brand Panel Footer Links">
+                                        <field jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container" name="./footerLinks">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <label jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/textfield" fieldLabel="Label" name="./label" required="{Boolean}true"/>
+                                                <link jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/form/pathfield" fieldLabel="Link" name="./link" rootPath="/content" required="{Boolean}true"/>
+                                            </items>
+                                        </field>
+                                    </footerLinks>
+                                </items>
+                            </column>
+                        </items>
+                    </links>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

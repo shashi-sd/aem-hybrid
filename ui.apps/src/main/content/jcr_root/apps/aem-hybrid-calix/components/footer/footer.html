@@ -1,0 +1,37 @@
+<footer data-sly-use.tabs="com.adobe.cq.wcm.core.components.models.Tabs"
+        data-sly-use.footer="com.aem.hybrid.calix.core.models.site.FooterModel"
+        data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+        data-sly-set.items="${tabs.children || tabs.items}"
+        data-placeholder-text="${wcmmode.edit && items.size < 1 && 'Please drag Footer Column Item components here' @ i18n}"
+        class="cmp-footer">
+    <div class="cmp-footer__main">
+        <div class="cmp-footer__main-wrapper">
+            <div class="cmp-footer__logo">
+                <img src="${footer.logo @ context='uri'}" alt="${footer.logoAlt}" loading="lazy"/>
+            </div>
+            <div class="cmp-footer__grid">
+                <sly data-sly-test="${items && items.size > 0}">
+                    <div data-sly-repeat.item="${items}"
+                         class="cmp-footer__grid-col"
+                         data-sly-resource="${item.resource.path @ resourceType='aem-hybrid-calix/components/footer-column-item'}"></div>
+                </sly>
+            </div>
+        </div>
+    </div>
+    <div class="cmp-footer__utility">
+        <div class="cmp-footer__utility-wrapper">
+            <nav data-sly-test="${footer.bottomLinks}"
+                 class="cmp-footer__utility-nav"
+                 aria-label="Legal">
+                <a data-sly-repeat.item="${footer.bottomLinks}"
+                   class="cmp-footer__utility-link"
+                   href="${item.url @ context='uri'}"
+                   target="_self">${item.label}</a>
+            </nav>
+            <p data-sly-test="${footer.copyright}"
+               class="cmp-footer__copyright">${footer.copyright}</p>
+        </div>
+    </div>
+    <sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
+         data-sly-test="${(wcmmode.edit || wcmmode.preview) && items.size < 1}"></sly>
+</footer>

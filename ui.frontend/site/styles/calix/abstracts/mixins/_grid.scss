@@ -1,0 +1,166 @@
+@use '../breakpoints' as *;
+@use "../rems" as *;
+@use "sass:math";
+@use "../tokens/sizes_definitions" as *;
+
+$wide-content-width: map-get($sizes, wideContentWidth);
+
+$side-margin-desktop: map-get($sizes, sideMarginDesktop);
+$side-margin-tablet: map-get($sizes, sideMarginTablet);
+$side-margin-default: map-get($sizes, sideMarginDefault);
+
+$grid-gap-width: rem(map-get($sizes, gridGapDefault));
+$grid-gap-width-tablet: rem(map-get($sizes, gridGapTablet));
+$grid-gap-width-desktop: rem(map-get($sizes, gridGapDesktop));
+
+$grid-column-count: 12;
+$grid-row-count: 3;
+$wide-grid-width: math.div($wide-content-width - map-get($sizes, gridGapDesktop) * 11, $grid-column-count);
+
+$column-width-mobile: calc((100vw - 152px) / 4);
+$column-width-tablet: calc((100vw - 184px) / 6);
+$column-width-desktop: calc((100vw - 344px) / 12);
+$column-width-max: rem(106);
+$full-bleed-left-max: calc(50vw - 638px);
+$full-bleed-left-desktop: calc((100vw - 344px) / 12 + 56px);
+
+
+@mixin grid-column-setup {
+  display: grid;
+
+  @for $i from 2 through $grid-column-count {
+    &-#{$i}-cols {
+      grid-template-columns: repeat($i, minmax(1rem, 1fr));
+    }
+  }
+}
+
+@mixin grid-row-setup {
+  display: grid;
+
+  @for $i from 2 through $grid-row-count {
+    &-#{$i}-rows {
+      grid-template-rows: repeat($i, auto);
+    }
+  }
+}
+
+@mixin grid-columns {
+  @for $i from 1 through $grid-column-count {
+    &-#{$i} {
+      grid-column: auto / span $i;
+    }
+
+    @if $i < $grid-column-count {
+      @for $x from $i + 1 through $grid-column-count {
+        &-#{$i}-thru-#{$x} {
+          grid-column: $i / span $x - $i + 1;
+        }
+      }
+    }
+  }
+
+  @for $i from 1 through ($grid-column-count - 1) {
+    &-start-#{$i} {
+      grid-column-start: $i;
+    }
+  }
+}
+
+@mixin grid-rows {
+  @for $i from 1 through $grid-row-count {
+    &-#{$i} {
+      grid-row: auto / span $i;
+    }
+
+    @if $i < $grid-row-count {
+      @for $x from $i + 1 through $grid-row-count {
+        &-#{$i}-thru-#{$x} {
+          grid-row: $i / span $x - $i + 1;
+        }
+      }
+    }
+  }
+
+  @for $i from 1 through ($grid-row-count - 1) {
+    &-start-#{$i} {
+      grid-row-start: $i;
+    }
+  }
+}
+
+@mixin grid-column($start, $end) {
+  grid-column: $start / #{'' + $end};
+}
+
+@mixin grid-row($start, $end) {
+  grid-row: $start / #{'' + $end};
+}
+
+@mixin grid($isContainer: false, $containerName: false, $mediaFallback: false) {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(1rem, 1fr));
+  column-gap: $grid-gap-width;
+
+  @include breakpoint(medium, $isContainer, $containerName, $mediaFallback) {
+    grid-template-columns: repeat(6, minmax(1rem, 1fr));
+    column-gap: $grid-gap-width-tablet;
+  }
+
+  @include breakpoint(large, $isContainer, $containerName, $mediaFallback) {
+    grid-template-columns: repeat(12, minmax(1rem, 1fr));
+    column-gap: $grid-gap-width-desktop;
+  }
+}
+
+@mixin padding--constrained-container {
+  padding: 0 rem($side-margin-default);
+  @include breakpoint(medium) {
+    padding: 0 rem($side-margin-tablet);
+  }
+  @include breakpoint(large) {
+    padding: 0 max(#{rem($side-margin-desktop)}, calc(50% - #{rem(math.div($wide-content-width, 2))}));
+  }
+}
+
+@mixin grid--constrained-container {
+    @include padding--constrained-container;
+    @include grid;
+}
+
+@mixin grid--constrained-content($start-col: 2, $span: 10) {
+  grid-column: 1 / 5;
+  @include breakpoint(medium) {
+    grid-column: 1 / 7;
+  }
+  @include breakpoint(large) {
+    grid-column: $start-col / span $span;
+  }
+}
+
+@mixin grid--full-bleed {
+  display: grid;
+  grid-template-columns: rem($side-margin-default) repeat(3, 1fr $grid-gap-width) 1fr rem($side-margin-default);
+  @include breakpoint(medium) {
+    grid-template-columns: rem($side-margin-tablet) repeat(5, 1fr $grid-gap-width-tablet) 1fr rem($side-margin-tablet);
+  }
+  @include breakpoint(large) {
+    grid-template-columns: minmax(rem($side-margin-desktop), 1fr) repeat(11, minmax(0, rem($wide-grid-width)) $grid-gap-width-desktop) minmax(0, rem($wide-grid-width)) minmax(rem($side-margin-desktop), 1fr);
+  }
+
+}
+
+@mixin grid--inpage-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(1rem, 1fr));
+  column-gap: $grid-gap-width;
+  @include breakpoint(medium) {
+    grid-template-columns: repeat(6, minmax(1rem, 1fr));
+    column-gap: $grid-gap-width-tablet;
+  }
+  @include breakpoint(large) {
+    grid-template-columns: repeat(9, minmax(1rem, 1fr));
+    column-gap: $grid-gap-width-desktop;
+  }
+}
+

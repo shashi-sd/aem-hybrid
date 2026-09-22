@@ -1,0 +1,47 @@
+{
+  "name": "aem-hybrid-calix-frontend",
+  "version": "1.0.0",
+  "description": "AEM Hybrid Calix - Frontend (site/ TypeScript + SCSS, react/ React components)",
+  "private": true,
+  "main": "site/scripts/main.ts",
+  "scripts": {
+    "dev": "npm run build:react && webpack --config webpack.dev.js && clientlib --verbose",
+    "prod": "npm run build:react && webpack --config webpack.prod.js && clientlib --verbose",
+    "build": "npm run build:react && webpack --config webpack.prod.js && clientlib --verbose",
+    "build:react": "cd react && npm run build",
+    "start": "webpack serve --config webpack.dev.js",
+    "start:react": "cd react && npm start",
+    "sync": "aemsync -d -p ../ui.apps/src/main/content",
+    "lint": "eslint site/scripts/**/*.ts",
+    "test": "npm run test:react",
+    "test:react": "cd react && npm test",
+    "test-coverage": "cd react && npm run test-coverage"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "aem-clientlib-generator": "^1.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.3.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.10.0",
+    "ts-loader": "^9.5.1",
+    "css-loader": "^6.8.1",
+    "sass-loader": "^13.3.2",
+    "sass": "^1.69.5",
+    "style-loader": "^3.3.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "clean-webpack-plugin": "^4.0.0",
+    "webpack-dev-server": "^4.15.1",
+    "eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "jest": "^29.7.0",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/jest-dom": "^6.1.4"
+  }
+}

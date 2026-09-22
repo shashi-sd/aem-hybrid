@@ -1,0 +1,55 @@
+@import './tokens/colors_definitions';
+
+@mixin generate-color-variables {
+    @each $group, $value in $palette-map {
+        @each $name, $hex in $value {
+            --color-#{$name}: #{$hex};
+        }
+    }
+}
+
+@function get-color($group, $name: $default) {
+    @if map-has-key($palette-map, $group) {
+        @return var(--color-#{$name});
+    }
+
+    @else {
+        @warn 'Unfortunately, no value could be retrieved from #{$group}. Available colors are: #{map-keys($palette-map)}.';
+        @return '';
+    }
+}
+
+:root {
+    @include generate-color-variables;
+}
+
+.bg-light-blue {
+    background-color: get-color(primary, light-blue);
+}
+
+.bg-medium-blue {
+    background-color: get-color(primary, medium-blue);
+}
+
+.bg-white {
+    background-color: get-color(primary, white);
+}
+
+$bg-gradient-primary-to-dark-blue: linear-gradient(3.57deg, get-color(primary, calix-blue) 34.82%, get-color(primary, dark-blue) 66.67%);
+$bg-gradient-dark-blue-to-primary: linear-gradient(3.57deg, get-color(primary, dark-blue) 34.82%, get-color(primary, calix-blue) 66.67%);
+$bg-gradient-medium-blue-to-white: linear-gradient(326.28deg, get-color(primary, medium-blue) 7.79%, get-color(primary, white) 123.11%);
+
+.bg-gradient-primary-to-dark-blue {
+    background: $bg-gradient-primary-to-dark-blue;
+}
+
+.bg-radient-dark-blue-to-primary {
+    background: $bg-gradient-dark-blue-to-primary;
+}
+
+.bg-gradient-medium-blue-to-white {
+    background: $bg-gradient-medium-blue-to-white;
+}
+
+$filter-black: invert(0%) sepia(98%) saturate(0%) hue-rotate(28deg) brightness(98%) contrast(105%);
+$filter-white: invert(98%) sepia(96%) saturate(246%) hue-rotate(154deg) brightness(122%) contrast(100%);

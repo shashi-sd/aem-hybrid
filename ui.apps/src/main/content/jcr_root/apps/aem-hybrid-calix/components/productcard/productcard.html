@@ -1,0 +1,69 @@
+<!--/*
+    Product Card — hybrid AEM + React component, resilient by construction.
+
+    NOTE: this site is PRIVATE / authenticated. Public search crawlers,
+    social unfurlers, etc. never reach this page at all — so "SEO" is NOT
+    the justification for this pattern here. Don't pitch schema.org/JSON-LD
+    below as an SEO win on this project; it isn't reachable by anything
+    that matters for that purpose. Kept only because some private sites
+    ARE indexed by an authenticated INTERNAL crawler (see reasons below) —
+    remove the JSON-LD block entirely if that's not the case for you.
+
+    THE MECHANISM (this is the actual, provable claim — not "hydration"):
+
+      The React initializer (ui.frontend/react-app/src/index.js) calls
+      ReactDOM.createRoot(mountEl).render(...) — see utils/renderUtils.js. That
+      call CLEARS whatever HTML was inside the mount element and replaces
+      it with client-rendered React output. So if product data lived only
+      inside the mount div, anything that reads raw HTML without running
+      JS would see NOTHING there — a blank <div>. Historically, the mount
+      div below was exactly that: an empty shell (data-component only).
+
+      This version fixes that: product name, description, image (with alt
+      text), category, and feature list are server-rendered by HTL from
+      ProductCardModel OUTSIDE the .react-component mount div, as plain
+      sibling markup. React never touches it, whether JS loads in 500ms,
+      times out, fails to parse, or never runs at all.
+
+      React still owns the mount div for the parts that genuinely need to
+      be dynamic/interactive: live price, stock, rating, "add to
+      favorites" — data that comes from .dataservice.json.
+
+    WHY THIS MATTERS ON A PRIVATE SITE (the real justification here):
+
+      1. Resilience to JS failure — corporate proxies/firewalls that strip
+         or block scripts, ad-blockers, flaky internal/VPN networks, a JS
+         runtime error anywhere on the page — all real in enterprise
+         environments. Core product info still renders regardless.
+
+      2. Performance / Core Web Vitals (LCP, CLS) — name/image/description
+         paint with the initial HTML response; no waiting on 2 extra API
+         calls (pagedata.json + dataservice.json) + JS parse/execute before
+         anything meaningful appears. No layout shift from a skeleton
+         placeholder swapping to real content.
+
+      3. Accessibility — screen readers get real content on first paint,
+         not a loading spinner or empty div while the JS bundle boots.
+         This is true regardless of whether the site is public.
+
+      4. Internal enterprise search — many intranets/portals ARE indexed
+         by an internal crawler (SharePoint Search, Elastic, Coveo, Glean,
+         etc.) using a service account that authenticates, then reads
+         rendered HTML — typically without executing JS. This is the
+         private-site analog of "SEO," and it's the reason the optional
+         JSON-LD block below might still be worth keeping.
+
+<!--/*
+    Product Card - Hybrid CMS React Component
+
+    HTL renders a simple mount-point div. The React initializer finds it via
+    class="react-component" and data-component (resourceType), then hydrates
+    using data matched by componentId from pagedata.json + servicedata.json.
+*/-->
+<sly data-sly-use.card="com.aem.hybrid.calix.core.models.ProductCardModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = wcmmode.edit, classAppend = 'cmp-productcard'}"></sly>
+<div class="react-component reveal-on-scroll"
+     data-component="aem-hybrid-calix/components/react/productcard"
+     data-component-id="${card.componentId}"
+     data-resource-type="${resource.resourceType}"></div>

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow AEM system paths
+Disallow: /content/dam/aem-hybrid-calix/private/
+Disallow: /libs/
+Disallow: /etc/
+Disallow: /bin/
+Disallow: /system/
+Disallow: /apps/
+
+Sitemap: /sitemap.xml

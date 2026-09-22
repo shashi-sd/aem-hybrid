@@ -1,0 +1,23 @@
+<sly data-sly-use.model="com.aem.hybrid.calix.core.models.site.FooterColumnModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-set.empty="${model.empty}">
+        <div data-sly-test="${model.title}"
+             class="cmp-footer-nav__title">${model.title}</div>
+        <nav data-sly-test="${model.links}"
+             class="cmp-footer-nav">
+            <a data-sly-repeat.item="${model.links}"
+               class="cmp-footer-nav__link"
+               href="${item.url @ context='uri'}"
+               target="_self">${item.label}</a>
+        </nav>
+        <div data-sly-test.icons="${model.icons}"
+             data-sly-list="${icons}"
+            class="cmp-footer__social">
+            <a class="cmp-social-link cmp-social-link--${item.icon}"
+               href="${item.url @ context='uri'}"
+               target="_blank">
+               <span class="visually-hidden">${item.iconText}</span>
+            </a>
+        </div>
+</sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = empty, classAppend='cmp-footer__grid-col'}"></sly>

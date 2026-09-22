@@ -1,0 +1,161 @@
+@use "../../../../site/styles/utils/variables/color/colors" as *;
+
+$pl-font-heading: var(--portal-font-heading, 'Outfit', sans-serif);
+$pl-font-body: var(--portal-font-body, 'Geist', sans-serif);
+
+.cmp-product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 64px 0 96px;
+  font-family: $pl-font-body;
+
+  &__accent {
+    display: block;
+    width: 48px;
+    height: 4px;
+    border-radius: 99px;
+    background: $portal-orange;
+  }
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: -8px;
+  }
+
+  &__title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  &__eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    color: $portal-orange;
+  }
+
+  &__heading-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__heading {
+    margin: 0;
+    font-family: $pl-font-heading;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: normal;
+    color: $portal-ink-strong;
+  }
+
+  &__count {
+    padding: 2px 8px;
+    border-radius: 99px;
+    background: $portal-border;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $portal-slate;
+    white-space: nowrap;
+  }
+
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__chip {
+    padding: 8px 14px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: normal;
+    color: $portal-slate;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s;
+
+    &:hover {
+      color: $portal-primary;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $portal-primary;
+      outline-offset: 2px;
+    }
+
+    &--active {
+      background: $portal-primary-soft;
+      font-weight: 600;
+      color: $portal-primary;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    min-width: 0;
+
+    > .cmp-product-card {
+      margin: 0;
+    }
+  }
+
+  &__empty {
+    padding: 32px;
+    border: 1px dashed $portal-border;
+    border-radius: 16px;
+    font-size: 14px;
+    color: $portal-slate;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cmp-product-list {
+    padding: 40px 0 56px;
+  }
+
+  .cmp-product-list__heading {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .cmp-product-list__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .cmp-product-list__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .cmp-product-list__grid {
+    grid-template-columns: 1fr;
+  }
+}
+

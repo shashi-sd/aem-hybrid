@@ -1,0 +1,81 @@
+<!--/*
+    User Auth Control (dispatcher-cache safe)
+    ------------------------------------------------------------------
+    This component is ALWAYS server-rendered in its anonymous state
+    (Login link visible, greeting/Logout hidden) so the HTML output is
+    identical for every visitor and safe to cache at the dispatcher/CDN.
+
+    The actual "Hi, <user>" / Logout state is applied purely client-side
+    by ui.frontend/src/main/webpack/site/globalInit.ts, which calls
+    a custom, dispatcher-allowlisted, never-cached servlet:
+
+        GET /bin/aem-hybrid-calix/userinfo.json
+        -> { "userId": "admin" | "anonymous", "authenticated": true|false }
+
+    (com.aem.hybrid.calix.core.servlets.CurrentUserInfoServlet — the OOTB
+    /system/sling/info.sessionInfo.json is blocked by the default
+    dispatcher filters, so it can't be used here.)
+
+    Backed by com.aem.hybrid.calix.core.models.UserAuthControlModel,
+    which now only resolves the authorable URLs/labels (no request-based
+    auth detection any more -- that would bake a specific user into the
+    cached HTML). data-cmp-auth-control marks the root for the JS to
+    find and hydrate.
+*/-->
+<sly data-sly-use.model="com.aem.hybrid.calix.core.models.UserAuthControlModel"/>
+
+<div class="cmp-auth-control"
+     data-cmp-auth-control
+     data-greeting-prefix="${model.greetingPrefix}">
+
+    <sly data-sly-test="${model.showHomeIcon}">
+        <a class="cmp-auth-control__btn cmp-auth-control__btn--home"
+           href="${model.homeUrl @ context='uri'}"
+           title="${model.homeLabel}"
+           aria-label="${model.homeLabel}">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9.5 12 3l9 6.5"/>
+                <path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/>
+            </svg>
+        </a>
+    </sly>
+
+    <!-- Hydrated client-side: text filled in by globalInit.ts -->
+    <span class="cmp-auth-control__user" data-cmp-hook-auth="user" hidden></span>
+
+    <!-- Hydrated client-side: hidden until we know the user is authenticated -->
+    <a class="cmp-auth-control__btn cmp-auth-control__btn--logout"
+       data-cmp-hook-auth="logout"
+       href="${model.logoutUrl @ context='uri'}"
+       title="${model.logoutLabel}"
+       aria-label="${model.logoutLabel}"
+       hidden>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        <span>${model.logoutLabel}</span>
+    </a>
+
+    <!-- Default server-rendered (anonymous, cache-safe) state -->
+    <a class="cmp-auth-control__btn"
+       data-cmp-hook-auth="login"
+       href="${model.loginUrl @ context='uri'}"
+       title="${model.loginLabel}"
+       aria-label="${model.loginLabel}">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+            <polyline points="10 17 15 12 10 7"/>
+            <line x1="15" y1="12" x2="3" y2="12"/>
+        </svg>
+        <span>${model.loginLabel}</span>
+    </a>
+
+</div>

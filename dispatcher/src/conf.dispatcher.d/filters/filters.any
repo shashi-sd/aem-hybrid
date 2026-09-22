@@ -1,0 +1,50 @@
+#
+# This file contains the filter ACL, and can be customized.
+#
+# By default, it includes the default filter ACL.
+#
+
+$include "./default_filters.any"
+
+# Allow components JSON model
+/0101 { /type "allow" /extension "json" /selectors "model" /path "/content/*" }
+
+# Allow manifest.webmanifest files located in the content
+/0102 { /type "allow" /extension "webmanifest" /path "/content/*/manifest" }
+
+# SEO: allow robots.txt and sitemap.xml at the site root
+/0103 { /type "allow" /url "/robots.txt" }
+/0104 { /type "allow" /url "/sitemap.xml" }
+/0105 { /type "allow" /extension "xml" /selectors "sitemap" /path "/content/*" }
+/0106 { /type "allow" /extension "txt" /path "/apps/*/robots" }
+/0107 { /type "allow" /url "/apps/aem-hybrid-calix/robots.txt" }
+
+# Allow custom current-user-info endpoint (used by the userauthcontrol
+# component to hydrate the login/logout state client-side without
+# relying on the blocked /system/sling/info.sessionInfo.json OOTB path)
+/0108 { /type "allow" /method "GET" /url "/bin/aem-hybrid-calix/userinfo.json" }
+
+# Allow product favorite toggle endpoint (POST, per-user profile update)
+/0109 { /type "allow" /method "POST" /url "/bin/aem-hybrid-calix/favorite" }
+
+# Allow pagedata and servicedata JSON selectors (used for client-side data
+# fetching of page/service data models) under content
+/0114 { /type "allow" /method "GET" /extension "json" /selectors "pagedata" /path "/content/*" }
+/0115 { /type "allow" /method "GET" /extension "json" /selectors "servicedata" /path "/content/*" }
+
+# ----------------------------------------------------------------------------
+# RDE / DEV ONLY: enable standard form-based (user/pass) login through the
+# dispatcher so test users can authenticate on Author/Publish during RDE
+# validation. The OOTB default_filters.any only allows the IMS SSO callback
+# (/callback/j_security_check) and blocks /libs/** + /j_security_check by
+# default, which is why manually-created test users cannot log in through
+# the dispatcher/CDN URL even though they exist in the repository.
+#
+# REMOVE or comment these out again before promoting to a real production
+# environment - form login should normally go through IMS/SAML in prod.
+/0110 { /type "allow" /method "GET"  /url "/libs/granite/core/content/login.html" }
+/0111 { /type "allow" /method "GET"  /url "/libs/granite/core/content/login/*" }
+/0112 { /type "allow" /method "POST" /url "/j_security_check" }
+/0113 { /type "allow" /method "GET"  /url "/system/sling/logout.html" }
+# ----------------------------------------------------------------------------
+

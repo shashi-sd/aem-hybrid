@@ -1,0 +1,25 @@
+<div class="cmp-utility-nav"
+     data-sly-use.model="com.aem.hybrid.calix.core.models.site.UtilityNavModel">
+    <div class="cmp-utility-nav__wrapper">
+        <nav data-sly-test="${model.links}"
+             class="cmp-utility-nav__links"
+             aria-label="Utility">
+            <a data-sly-repeat.item="${model.links}"
+               class="cmp-utility-nav__link"
+               href="${item.url @ context='uri'}"
+               target="${item.target}">
+                <span class="cmp-utility-nav__link--text">${item.label}</span>
+            </a>
+        </nav>
+        <div class="cmp-utility-nav__login"
+             data-sly-resource="${'userauthcontrol' @ resourceType='aem-hybrid-calix/components/userauthcontrol'}"></div>
+        <div class="cmp-utility-nav__menuToggle">
+            <button class="cmp-button cmp-button--tertiary"
+                    type="button"
+                    aria-label="Toggle Site Navigation Menu">
+                <span class="cmp-button__icon cmp-button__icon--close"
+                      aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</div>

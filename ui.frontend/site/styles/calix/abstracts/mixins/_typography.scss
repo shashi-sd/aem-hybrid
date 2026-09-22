@@ -1,0 +1,65 @@
+@use "sass:list";
+@use '../breakpoints' as *;
+@import '../tokens/typography_definitions';
+
+@mixin type-breakpoint($size) {
+    @if $size != 'small' {
+        @include breakpoint($size) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin generate-type-classes {
+    @each $level, $breakpoints in $type-map {
+        $selector: '.type-' + $level;
+        @if list.index(h1 h2 h3 h4 h5 h6, $level){
+            $selector: '.type-' + $level + ', ' + $level;
+        }
+        #{$selector} {
+            $breakpoints-map: map-get($type-map, $level);
+
+            @each $breakpoint, $properties in $breakpoints-map {
+                $properties-map: map-get($breakpoints-map, $breakpoint);
+
+                @include type-breakpoint($breakpoint) {
+                    @each $property, $value in $properties-map {
+                        #{$property}: map-get($properties-map, $property);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin generate-scoped-type-classes {
+    @each $level, $breakpoints in $type-map {
+        @if not list.index(h1 h2 h3 h4 h5 h6, $level) {
+            .type-#{$level} {
+                $bp-map: map-get($type-map, $level);
+                @each $breakpoint, $properties in $bp-map {
+                    @include type-breakpoint($breakpoint) {
+                        @each $property, $value in $properties {
+                            #{$property}: $value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin get-font($level) {
+    $breakpoints-map: map-get($type-map, $level);
+    @each $breakpoint, $properties in $breakpoints-map {
+        $properties-map: map-get($breakpoints-map, $breakpoint);
+
+        @include type-breakpoint($breakpoint) {
+            @each $property, $value in $properties-map {
+                #{$property}: map-get($properties-map, $property);
+            }
+        }
+    }
+}

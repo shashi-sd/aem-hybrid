@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/aem-hybrid-calix" mode="merge"/>
+    <!-- Force-replace the demo page (page + jcr:content) so authored components land in JCR.
+         Must come BEFORE the broader /content/aem-hybrid-calix merge filter.
+         NOTE: root must be the page node, not jcr:content, because the on-disk
+         serialization is hybrid-demo/.content.xml (a cq:Page with jcr:content child),
+         not hybrid-demo/_jcr_content/.content.xml. A filter rooted at jcr:content
+         caused vault to delete jcr:content and never re-import it. -->
+    <filter root="/content/aem-hybrid-calix/us/en/hybrid-demo"/>
+    <!-- Login page (public, no session required) -->
+    <filter root="/content/aem-hybrid-calix/us/en/login"/>
+    <!-- Force-replace product detail pages so newly authored components (e.g. product-favorite) land in JCR.
+         These must come BEFORE the broader /content/aem-hybrid-calix merge filter below. -->
+    <filter root="/content/aem-hybrid-calix/us/en/products/calix-cloud"/>
+    <filter root="/content/aem-hybrid-calix/us/en/products/gigaspire-systems"/>
+    <filter root="/content/aem-hybrid-calix/us/en/products/revenue-edge"/>
+    <filter root="/content/aem-hybrid-calix/us/en/products/b6-systems"/>
+    <filter root="/content/aem-hybrid-calix/us/en/products/c7-system"/>
+    <filter root="/content/aem-hybrid-calix/us/en/products/e3-2-system"/>
+    <filter root="/content/aem-hybrid-calix/us/en/products/e3-e5-systems"/>
+    <filter root="/content/aem-hybrid-calix/us/en/products/e7-2-system"/>
+    <filter root="/content/aem-hybrid-calix/us/en/products/e9-2-system"/>
+    <filter root="/content/aem-hybrid-calix/us/en/products/exa-e7-systems"/>
+    <filter root="/content/aem-hybrid-calix" mode="merge"/>
+    <filter root="/content/dam/aem-hybrid-calix" mode="merge">
+        <exclude pattern="/content/dam/aem-hybrid-calix(/.*)?"/>
+        <include pattern="/content/dam/aem-hybrid-calix/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/aem-hybrid-calix/asset.jpg" mode="merge"/>
+    <filter root="/content/dam/aem-hybrid-calix/calix-logo.svg" mode="merge"/>
+    <filter root="/content/experience-fragments/aem-hybrid-calix/us/en/site/header"/>
+    <filter root="/content/experience-fragments/aem-hybrid-calix/us/en/site/footer"/>
+    <filter root="/content/experience-fragments/aem-hybrid-calix/us/en/site/navigation"/>
+    <filter root="/content/experience-fragments/aem-hybrid-calix" mode="merge"/>
+</workspaceFilter>

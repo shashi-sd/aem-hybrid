@@ -1,0 +1,9 @@
+{
+    "names": [
+        "aem-hybrid-calix"
+    ],
+    "onDemand": false,
+    "includeInactivePages": false,
+    "includeLastModified": true,
+    "searchPath": "/content/aem-hybrid-calix"
+}

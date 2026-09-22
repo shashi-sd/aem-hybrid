@@ -1,0 +1,26 @@
+<!--/*
+    Profile Card — React mount point ("Welcome back" row).
+    Figma: "Redesign login page" › welcome-admin-row (5:42)
+    Skeleton mirrors the final layout to avoid layout shift before React mounts.
+*/-->
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = wcmmode.edit, classAppend = 'cmp-profile-card'}"></sly>
+
+<div class="react-component reveal-on-scroll"
+     data-component="${resource.resourceType}"
+     data-component-id="${resource.name}"
+     data-resource-type="${resource.resourceType}">
+
+    <sly data-sly-test="${!wcmmode.edit && !wcmmode.preview}">
+        <section class="cmp-profile-card cmp-profile-card--skeleton" aria-hidden="true">
+            <span class="cmp-profile-card__accent"></span>
+            <div class="cmp-profile-card__row">
+                <div class="cmp-profile-card__text">
+                    <span class="skeleton-block skeleton-text skeleton-profile-card__eyebrow"></span>
+                    <span class="skeleton-block skeleton-text skeleton-profile-card__greeting"></span>
+                </div>
+                <span class="skeleton-block skeleton-text skeleton-profile-card__chip"></span>
+            </div>
+        </section>
+    </sly>
+</div>

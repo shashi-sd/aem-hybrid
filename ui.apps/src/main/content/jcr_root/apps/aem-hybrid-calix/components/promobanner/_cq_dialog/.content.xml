@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Promo Banner"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+
+                    <!-- ============ DEFAULT CONTENT ============ -->
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Default"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Title"
+                                name="./title"
+                                required="{Boolean}true"/>
+                            <message
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldLabel="Message"
+                                name="./message"/>
+                            <ctaText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="CTA Text"
+                                name="./ctaText"/>
+                            <ctaLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="CTA Link"
+                                name="./ctaLink"/>
+                            <secondaryCtaText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Secondary CTA Text"
+                                name="./secondaryCtaText"/>
+                            <secondaryCtaLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="Secondary CTA Link"
+                                name="./secondaryCtaLink"/>
+                            <backgroundColor
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Background (CSS, optional)"
+                                fieldDescription="Leave empty for the Calix navy card. e.g. #0b132b or linear-gradient(...)"
+                                name="./backgroundColor"/>
+                        </items>
+                    </default>
+
+                    <!-- ============ PERSONALIZATION ============ -->
+                    <personalization
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Personalization"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <contextHubKey
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="ContextHub Key"
+                                fieldDescription="ContextHub store/item to read the role from. Default: profile/role"
+                                name="./contextHubKey"
+                                value="profile/role"/>
+
+                            <variants
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                fieldLabel="Role Variants"
+                                fieldDescription="Add one entry per role (e.g. admin, technician, subscriber). The variant whose role matches the current ContextHub value will be shown."
+                                composite="{Boolean}true">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./variants">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <role
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Role"
+                                            fieldDescription="Role value to match (case-insensitive)"
+                                            name="./role"
+                                            required="{Boolean}true"/>
+                                        <title
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Title"
+                                            name="./title"/>
+                                        <message
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldLabel="Message"
+                                            name="./message"/>
+                                        <ctaText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="CTA Text"
+                                            name="./ctaText"/>
+                                        <ctaLink
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="CTA Link"
+                                            name="./ctaLink"/>
+                                        <secondaryCtaText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Secondary CTA Text"
+                                            name="./secondaryCtaText"/>
+                                        <secondaryCtaLink
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Secondary CTA Link"
+                                            name="./secondaryCtaLink"/>
+                                        <backgroundColor
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Background (CSS, optional)"
+                                            fieldDescription="Leave empty for the Calix navy card."
+                                            name="./backgroundColor"/>
+                                    </items>
+                                </field>
+                            </variants>
+                        </items>
+                    </personalization>
+
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

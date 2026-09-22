@@ -1,0 +1,25 @@
+<!--/*
+    Authorable logout button.
+    Uses AEM Sling form-auth logout endpoint by default:
+      /system/sling/logout.html?resource=<redirect>
+*/-->
+<sly data-sly-test.label="${properties.label || 'Logout'}"/>
+<sly data-sly-test.redirectPath="${properties.redirectPath || '/content/aem-hybrid-calix/us/en/login'}"/>
+<sly data-sly-test.redirectHref="${redirectPath @ extension='html', context='uri'}"/>
+<sly data-sly-test.defaultLogoutUrl="${'/system/sling/logout.html?resource={0}' @ format=[redirectHref]}"/>
+<sly data-sly-test.linkUrl="${properties.linkUrl || defaultLogoutUrl}"/>
+<sly data-sly-test.ariaLabel="${properties.ariaLabel || label}"/>
+
+<a class="cmp-logoutbutton"
+   href="${linkUrl @ context='uri'}"
+   title="${ariaLabel}"
+   aria-label="${ariaLabel}">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+         stroke="currentColor" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+        <polyline points="16 17 21 12 16 7"/>
+        <line x1="21" y1="12" x2="9" y2="12"/>
+    </svg>
+    <span class="cmp-logoutbutton__label">${label}</span>
+</a>

@@ -1,0 +1,31 @@
+<template data-sly-template.first="${@ item}">
+    <button class="cmp-navigation-section-multilevel__menu-button cmp-navigation-section-multilevel__menu-button--top"
+            id="top-menu-button"
+            aria-expanded="false"
+            aria-controls="top-menu-xf">
+        <span data-sly-test="${item.eyebrow}"
+              class="cmp-navigation-section-multilevel__menu-eyebrow type-t8">${item.eyebrow @ context='text'}</span>
+        <span data-sly-test="${item.heading}"
+              class="cmp-navigation-section-multilevel__menu-title type-t4">${item.heading @ context='text'}</span>
+    </button>
+    <a class="cmp-navigation-section-multilevel__menu-link type-t4"
+       href="${item.url @ context='uri'}"
+       target="${item.target}">${item.heading @ context='text'}
+    </a>
+    <div data-sly-test="${item.fragmentVariationPath}"
+         class="cmp-navigation-section-multilevel__menu-xf-container cmp-navigation-section-multilevel__menu-xf-container--top"
+         id="top-menu-xf"
+         aria-labelledby="top-menu-button">
+        <div class="cmp-navigation-section-multilevel__back">
+            <button class="cmp-navigation-section-multilevel__back-btn cmp-navigation-section-multilevel__back-btn--l2">
+                ${item.heading}
+            </button>
+        </div>
+        <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
+             data-sly-test=${item.fragmentVariationPath}
+             data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
+             data-sly-resource="${@path=item.fragmentVariationPath, selectors=selector, wcmmode='disabled'}"
+             id="${fragment.id}"
+             class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}"></div>
+    </div>
+</template>

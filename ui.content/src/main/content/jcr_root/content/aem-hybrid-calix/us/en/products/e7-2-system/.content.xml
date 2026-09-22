@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2026-09-10T18:00:47.622+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/aem-hybrid-calix/settings/wcm/templates/page-content"
+        jcr:description="Compact, high-density access platform for optical networks."
+        jcr:primaryType="cq:PageContent"
+        jcr:title="E7-2 System"
+        sling:resourceType="aem-hybrid-calix/components/page"
+        pageTitle="E7-2 System">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aem-hybrid-calix/components/container"
+            layout="responsiveGrid">
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aem-hybrid-calix/components/container"
+                layout="responsiveGrid">
+                <container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aem-hybrid-calix/components/container"
+                    layout="responsiveGrid">
+                    <product_hero
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="aem-hybrid-calix/components/react/product-hero"
+                        addLabel="Add to My Products"
+                        breadcrumbHomeLabel="Portal"
+                        ctaIcon="download"
+                        ctaLink="/content/aem-hybrid-calix/us/en/products/calix-cloud"
+                        ctaText="Access Calix Cloud Dashboard"
+                        description="The E7-2 delivers scalable Ethernet access with GPON, XGS-PON and Active Ethernet in a 2RU chassis."
+                        eyebrow="Enterprise Access Node"
+                        image="https://www.calix.com/adobe/dynamicmedia/deliver/dm-aid--db7f6ecd-584d-4b6d-905e-51abb45b7213/systems-e9-2.png?width=960&amp;quality=85&amp;preferwebp=true"
+                        imageBadge="2RU Compact Hardware"
+                        imageCaptionSubtitle="Engineered for high density and high temperature resilient deployments"
+                        imageCaptionTitle="Calix E7-2 Chassis Architecture"
+                        loginMessage="Please log in to save products"
+                        removeLabel="In My Products"
+                        showBreadcrumbs="{Boolean}true"
+                        showFavorite="{Boolean}true"/>
+                </container>
+            </container>
+        </root>
+    </jcr:content>
+</jcr:root>

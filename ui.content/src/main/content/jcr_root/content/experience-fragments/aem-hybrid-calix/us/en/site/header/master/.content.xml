@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        cq:tags="[]"
+        cq:template="/conf/aem-hybrid-calix/settings/wcm/templates/xf-web-variation"
+        cq:xfMasterVariation="{Boolean}true"
+        cq:xfVariantType="web"
+        jcr:title="Header"
+        sling:resourceType="aem-hybrid-calix/components/xfpage">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aem-hybrid-calix/components/container"
+            layout="simple">
+            <header
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aem-hybrid-calix/components/header"
+                logo="/content/dam/aem-hybrid-calix/calix-logo.svg"
+                alt="Calix"
+                accessibilityLabel="Calix home"
+                aspectRatio="4/1"
+                homeUrl="/content/aem-hybrid-calix/us/en/hybrid-demo">
+                <utilitynav
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aem-hybrid-calix/components/utilitynav">
+                    <userauthcontrol
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="aem-hybrid-calix/components/userauthcontrol"
+                        homeUrl="/content/aem-hybrid-calix/us/en"
+                        loginUrl="/content/aem-hybrid-calix/us/en/login.html"
+                        logoutRedirectPath="/content/aem-hybrid-calix/us/en/login.html"/>
+                </utilitynav>
+                <navigation
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aem-hybrid-calix/components/navigation">
+                    <products
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="aem-hybrid-calix/components/navigation-panel"
+                        cq:panelTitle="Products"
+                        fragmentVariationPath="/content/experience-fragments/aem-hybrid-calix/us/en/site/navigation/products-featured/master">
+                        <panels
+                            jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                heading="Access Systems">
+                                <links
+                                    jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        label="E7-2 System"
+                                        url="/content/aem-hybrid-calix/us/en/products/e7-2-system"/>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        label="E9-2 System"
+                                        url="/content/aem-hybrid-calix/us/en/products/e9-2-system"/>
+                                    <item2
+                                        jcr:primaryType="nt:unstructured"
+                                        label="E3-2 System"
+                                        url="/content/aem-hybrid-calix/us/en/products/e3-2-system"/>
+                                    <item3
+                                        jcr:primaryType="nt:unstructured"
+                                        label="E3, E5 Systems"
+                                        url="/content/aem-hybrid-calix/us/en/products/e3-e5-systems"/>
+                                    <item4
+                                        jcr:primaryType="nt:unstructured"
+                                        label="EXA E7 Systems"
+                                        url="/content/aem-hybrid-calix/us/en/products/exa-e7-systems"/>
+                                </links>
+                            </item0>
+                            <item1
+                                jcr:primaryType="nt:unstructured"
+                                heading="Legacy Platforms">
+                                <links
+                                    jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        label="B6 Systems"
+                                        url="/content/aem-hybrid-calix/us/en/products/b6-systems"/>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        label="C7 System"
+                                        url="/content/aem-hybrid-calix/us/en/products/c7-system"/>
+                                </links>
+                            </item1>
+                            <item2
+                                jcr:primaryType="nt:unstructured"
+                                heading="Subscriber Systems">
+                                <links
+                                    jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        label="GigaSpire Systems"
+                                        url="/content/aem-hybrid-calix/us/en/products/gigaspire-systems"/>
+                                </links>
+                            </item2>
+                            <item3
+                                jcr:primaryType="nt:unstructured"
+                                heading="Software &amp; Cloud">
+                                <links
+                                    jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        label="Calix Cloud"
+                                        url="/content/aem-hybrid-calix/us/en/products/calix-cloud"/>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        label="Revenue EDGE"
+                                        url="/content/aem-hybrid-calix/us/en/products/revenue-edge"/>
+                                </links>
+                            </item3>
+                        </panels>
+                        <bottomLinks
+                            jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                label="All products"
+                                url="/content/aem-hybrid-calix/us/en/products"/>
+                        </bottomLinks>
+                    </products>
+                    <solutions
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="aem-hybrid-calix/components/navigation-panel"
+                        cq:panelTitle="Solutions"
+                        fragmentVariationPath="/content/experience-fragments/aem-hybrid-calix/us/en/site/navigation/solutions-featured/master">
+                        <panels
+                            jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                heading="Solutions">
+                                <links
+                                    jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        label="Managed Wi-Fi"
+                                        url="/content/aem-hybrid-calix/us/en/solutions/managed-wifi"/>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        label="Subscriber Experience"
+                                        url="/content/aem-hybrid-calix/us/en/solutions/subscriber-experience"/>
+                                </links>
+                            </item0>
+                        </panels>
+                        <bottomLinks
+                            jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                label="All solutions"
+                                url="/content/aem-hybrid-calix/us/en/solutions"/>
+                        </bottomLinks>
+                    </solutions>
+                    <resources
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="aem-hybrid-calix/components/navigation-panel"
+                        cq:panelTitle="Resources"
+                        fragmentVariationPath="/content/experience-fragments/aem-hybrid-calix/us/en/site/navigation/resources-featured/master">
+                        <panels
+                            jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                heading="Learn">
+                                <links
+                                    jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        label="Webinars"
+                                        url="/content/aem-hybrid-calix/us/en/resources/webinars"/>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        label="Whitepapers"
+                                        url="/content/aem-hybrid-calix/us/en/resources/whitepapers"/>
+                                </links>
+                            </item0>
+                            <item1
+                                jcr:primaryType="nt:unstructured"
+                                heading="Blog">
+                                <links
+                                    jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        label="Hybrid Architecture with AEM"
+                                        url="/content/aem-hybrid-calix/us/en/blogs/hybrid-architecture-aem"/>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        label="Performance Best Practices"
+                                        url="/content/aem-hybrid-calix/us/en/blogs/performance-best-practices"/>
+                                    <item2
+                                        jcr:primaryType="nt:unstructured"
+                                        label="React Islands in AEM"
+                                        url="/content/aem-hybrid-calix/us/en/blogs/react-islands-aem"/>
+                                </links>
+                            </item1>
+                        </panels>
+                        <bottomLinks
+                            jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                label="All resources"
+                                url="/content/aem-hybrid-calix/us/en/resources"/>
+                            <item1
+                                jcr:primaryType="nt:unstructured"
+                                label="Blog"
+                                url="/content/aem-hybrid-calix/us/en/blogs"/>
+                        </bottomLinks>
+                    </resources>
+                    <about
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="aem-hybrid-calix/components/navigation-panel"
+                        cq:panelTitle="About"
+                        fragmentVariationPath="/content/experience-fragments/aem-hybrid-calix/us/en/site/navigation/about-featured/master">
+                        <panels
+                            jcr:primaryType="nt:unstructured">
+                            <item0
+                                jcr:primaryType="nt:unstructured"
+                                heading="Company">
+                                <links
+                                    jcr:primaryType="nt:unstructured">
+                                    <item0
+                                        jcr:primaryType="nt:unstructured"
+                                        label="About Calix"
+                                        url="/content/aem-hybrid-calix/us/en/about"/>
+                                    <item1
+                                        jcr:primaryType="nt:unstructured"
+                                        label="Leadership Team"
+                                        url="/content/aem-hybrid-calix/us/en/about/leadership"/>
+                                    <item2
+                                        jcr:primaryType="nt:unstructured"
+                                        label="Careers"
+                                        url="/content/aem-hybrid-calix/us/en/about/careers"/>
+                                </links>
+                            </item0>
+                        </panels>
+                    </about>
+                </navigation>
+            </header>
+        </root>
+    </jcr:content>
+</jcr:root>

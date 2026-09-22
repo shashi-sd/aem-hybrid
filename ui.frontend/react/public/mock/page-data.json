@@ -1,0 +1,115 @@
+{
+  "components": [
+    {
+      "resourceType": "aem-hybrid-calix/components/react/product-hero",
+      "componentId": "product_hero",
+      "order": 5,
+      "isReact": true,
+      "data": {
+        "eyebrow": "Enterprise Access Node",
+        "description": "The E7-2 delivers scalable Ethernet access with GPON, XGS-PON and Active Ethernet in a 2RU chassis. Perfect for service providers modernizing subscriber operations.",
+        "ctaText": "Access Calix Cloud Dashboard",
+        "ctaLink": "/content/aem-hybrid-calix/us/en/products/calix-cloud",
+        "ctaIcon": "download",
+        "imageBadge": "2RU Compact Hardware",
+        "imageCaptionTitle": "Calix E7-2 Chassis Architecture",
+        "imageCaptionSubtitle": "Engineered for high density and high temperature resilient deployments",
+        "addLabel": "Add to My Products",
+        "removeLabel": "In My Products",
+        "loginMessage": "Please log in to save products",
+        "pageTitle": "E7-2 System",
+        "breadcrumbs": [
+          {
+            "title": "Portal",
+            "path": "/content/aem-hybrid-calix/us/en"
+          },
+          {
+            "title": "Products",
+            "path": "/content/aem-hybrid-calix/us/en/products"
+          },
+          {
+            "title": "E7-2 System",
+            "path": "/content/aem-hybrid-calix/us/en/products/e7-2-system"
+          }
+        ]
+      }
+    },
+    {
+      "resourceType": "aem-hybrid-calix/components/react/profile-card",
+      "componentId": "profilecard",
+      "order": 1,
+      "isReact": true,
+      "data": {
+        "greetingPrefix": "Welcome back,",
+        "sectionLabel": "My Profile",
+        "favoritesLabel": "My Favorites",
+        "favoritesLink": "/content/aem-hybrid-calix/us/en/my-favorites"
+      }
+    },
+    {
+      "resourceType": "aem-hybrid-calix/components/react/product-list",
+      "componentId": "productlist",
+      "order": 2,
+      "isReact": true,
+      "data": {
+        "heading": "My Products",
+        "emptyMessage": "No products found in your account",
+        "showFilters": true,
+        "products": {
+          "items": [
+            {
+              "productName": "GP-1100",
+              "productPath": "/content/aem-hybrid-calix/us/en/products/gp-1100",
+              "productDescription": "High-performance ONT with 10G capability",
+              "productCategory": "Broadband"
+            },
+            {
+              "productName": "E7-2",
+              "productPath": "/content/aem-hybrid-calix/us/en/products/e7-2",
+              "productDescription": "Intelligent access edge platform for fiber deployments",
+              "productCategory": "Broadband"
+            },
+            {
+              "productName": "GS4220E",
+              "productPath": "/content/aem-hybrid-calix/us/en/products/gs4220e",
+              "productDescription": "Managed switch with advanced routing and PoE+",
+              "productCategory": "Ethernet CPE"
+            },
+            {
+              "productName": "CommandIQ",
+              "productPath": "/content/aem-hybrid-calix/us/en/products/commandiq",
+              "productDescription": "Subscriber experience app for network management",
+              "productCategory": "Subscriber"
+            }
+          ]
+        },
+        "countLabel": "Active",
+        "ctaLabel": "Launch Dashboard"
+      }
+    },
+    {
+      "resourceType": "aem-hybrid-calix/components/react/product-favorite",
+      "componentId": "productfavorite",
+      "order": 3,
+      "isReact": true,
+      "data": {
+        "addLabel": "Add to My Products",
+        "removeLabel": "In My Products",
+        "loginMessage": "Please log in to save products"
+      }
+    },
+    {
+      "resourceType": "aem-hybrid-calix/components/react/network-dashboard",
+      "componentId": "networkdashboard",
+      "order": 4,
+      "isReact": true,
+      "data": {
+        "title": "Network Operations",
+        "subtitle": "Real-time view across every POP you operate",
+        "accentColor": "blue",
+        "ctaLabel": "Open Full Console",
+        "ctaLink": "#"
+      }
+    }
+  ]
+}

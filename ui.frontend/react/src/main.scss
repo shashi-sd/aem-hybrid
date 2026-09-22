@@ -1,0 +1,12 @@
+@use "../../site/styles/utils/variables/color/colors" as *;
+@use "./component/NetworkDashboard/NetworkDashboard.scss";
+@use "./component/ProductCard/ProductCard.scss";
+@use "./component/ProductFavorite/ProductFavorite.scss";
+@use "./component/ProductHero/ProductHero.scss";
+@use "./component/ProductList/ProductList.scss";
+@use "./component/ProfileCard/ProfileCard.scss";
+
+.react-error {
+  padding: 16px;
+  color: $color-error;
+}

@@ -1,0 +1,144 @@
+<!--/*
+    Login — Calix portal sign-in (Figma: "calix-portal-login-redesign", node 3:4).
+
+    Pure HTL, server-rendered. Posts to Sling form-based auth (/j_security_check).
+    Client behaviour (validation, server error message, password visibility
+    toggle) lives in ui.frontend/src/main/webpack/site/globalInit.ts and hooks
+    onto the data-cmp-hook-login attributes below.
+    Styles: ui.frontend/src/site/components/login/login.scss
+    Icons: exported from Figma as SVG and inlined (decorative, aria-hidden).
+*/-->
+<sly data-sly-set.cardTitle="${properties.cardTitle || 'Sign in — AEM Hybrid Calix'}"/>
+<sly data-sly-set.portalTag="${properties.title || 'Calix Portal'}"/>
+<sly data-sly-set.welcomeText="${properties.line1 || 'Welcome to the Calix insider portal'}"/>
+<sly data-sly-set.submitLabel="${properties.submitLabel || 'Log In'}"/>
+<sly data-sly-set.imageSrc="${properties.imageSrc || '/content/dam/aem-hybrid-calix/login-hero.jpg'}"/>
+<sly data-sly-set.rememberLabel="${properties.rememberLabel || 'Remember me'}"/>
+<sly data-sly-set.forgotLabel="${properties.forgotLabel || 'Forgot password?'}"/>
+<sly data-sly-set.ssoLabel="${properties.ssoLabel || 'Sign in with Single Sign-On'}"/>
+<sly data-sly-set.helpText="${properties.helpText || 'Secured by Calix SSO. Need help?'}"/>
+<sly data-sly-set.supportLabel="${properties.supportLabel || 'Contact Support'}"/>
+<sly data-sly-set.redirectPath="${properties.redirectPath || '/content/aem-hybrid-calix/us/en'}"/>
+<sly data-sly-set.redirectHref="${redirectPath @ extension='html', context='uri'}"/>
+
+<section class="cmp-login">
+
+    <sly data-sly-list.child="${resource.children}">
+        <nav class="cmp-login__utility-nav" aria-label="Utility" data-sly-test="${child.name == 'utilityLinks'}">
+            <ul class="cmp-login__utility-list">
+                <li data-sly-repeat.link="${child.children}"><a href="${link.valueMap.link @ extension='html'}">${link.valueMap.label}</a></li>
+            </ul>
+        </nav>
+    </sly>
+    <div class="cmp-login__media">
+        <img class="cmp-login__media-image"
+             src="${imageSrc}"
+             alt="${properties.imageAlt}"
+             loading="eager"
+             onerror="this.remove()"/>
+    </div>
+    <!-- Sign-in panel -->
+    <div class="cmp-login__panel">
+
+        <div class="cmp-login__card">
+            <div class="cmp-login__card-header">
+                <h1 class="cmp-login__title">${cardTitle}</h1>
+                <div class="cmp-login__badge-row">
+                    <span class="cmp-login__tag">${portalTag}</span>
+                    <span class="cmp-login__welcome">${welcomeText}</span>
+                </div>
+            </div>
+
+            <div class="cmp-login__error" data-cmp-hook-login="server-error" role="alert" hidden></div>
+
+            <form class="cmp-login__form"
+                  data-cmp-hook-login="form"
+                  method="POST"
+                  action="/j_security_check"
+                  enctype="application/x-www-form-urlencoded"
+                  autocomplete="on"
+                  novalidate>
+
+                <input type="hidden" name="_charset_" value="UTF-8"/>
+                <input type="hidden" name="j_validate" value="true"/>
+                <input type="hidden" name="resource" value="${redirectHref}"/>
+
+                <div class="cmp-login__fields">
+                    <div class="cmp-login__field">
+                        <label class="cmp-login__label" for="cmp-login-username">${properties.usernameLabel || 'Username'}</label>
+                        <div class="cmp-login__input-wrap">
+                            <span class="cmp-login__input-icon" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M12.6672 14V12.6667C12.6672 11.9594 12.3862 11.2811 11.886 10.781C11.3859 10.281 10.7075 10 10.0002 10H5.99974C5.29241 10 4.61406 10.281 4.1139 10.781C3.61375 11.2811 3.33276 11.9594 3.33276 12.6667V14M10.6669 4.66667C10.6669 6.13943 9.47289 7.33333 7.99996 7.33333C6.52704 7.33333 5.33299 6.13943 5.33299 4.66667C5.33299 3.19391 6.52704 2 7.99996 2C9.47289 2 10.6669 3.19391 10.6669 4.66667Z" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/></svg>
+                            </span>
+                            <input class="cmp-login__input"
+                                   type="text"
+                                   id="cmp-login-username"
+                                   name="j_username"
+                                   required
+                                   autocomplete="username"/>
+                        </div>
+                    </div>
+
+                    <div class="cmp-login__field">
+                        <label class="cmp-login__label" for="cmp-login-password">${properties.passwordLabel || 'Password'}</label>
+                        <div class="cmp-login__input-wrap">
+                            <span class="cmp-login__input-icon" aria-hidden="true">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M4.66667 7.33327V4.66639C4.66667 3.78227 5.01786 2.93435 5.64298 2.30918C6.2681 1.68401 7.11595 1.33279 8 1.33279C8.88406 1.33279 9.7319 1.68401 10.357 2.30918C10.9821 2.93435 11.3333 3.78227 11.3333 4.66639V7.33327M3.33333 7.33327H12.6667C13.403 7.33327 14 7.93028 14 8.66671V13.3338C14 14.0702 13.403 14.6672 12.6667 14.6672H3.33333C2.59695 14.6672 2 14.0702 2 13.3338V8.66671C2 7.93028 2.59695 7.33327 3.33333 7.33327Z" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/></svg>
+                            </span>
+                            <input class="cmp-login__input"
+                                   type="password"
+                                   id="cmp-login-password"
+                                   name="j_password"
+                                   required
+                                   autocomplete="current-password"/>
+                            <button type="button"
+                                    class="cmp-login__toggle-password"
+                                    data-cmp-hook-login="toggle-password"
+                                    aria-controls="cmp-login-password"
+                                    aria-pressed="false"
+                                    aria-label="Show password">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M1.37443 7.76867C1.31887 7.91834 1.31887 8.08299 1.37443 8.23267C1.91557 9.54476 2.83411 10.6666 4.01361 11.4561C5.19312 12.2455 6.58046 12.6669 7.99977 12.6669C9.41907 12.6669 10.8064 12.2455 11.9859 11.4561C13.1654 10.6666 14.084 9.54476 14.6251 8.23267C14.6807 8.08299 14.6807 7.91834 14.6251 7.76867C14.084 6.45657 13.1654 5.33469 11.9859 4.54527C10.8064 3.75584 9.41907 3.33441 7.99977 3.33441C6.58046 3.33441 5.19312 3.75584 4.01361 4.54527C2.83411 5.33469 1.91557 6.45657 1.37443 7.76867Z" stroke="#475569" stroke-width="2" stroke-linecap="round"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="cmp-login__options">
+                        <label class="cmp-login__remember" data-sly-test="${!properties.hideRememberMe}">
+                            <input class="cmp-login__remember-input" type="checkbox" name="remember_me" value="true" checked/>
+                            <span class="cmp-login__checkbox" aria-hidden="true">
+                                <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M9.99174 4.58345C10.2011 5.61071 10.0519 6.67869 9.56909 7.60927C9.0863 8.53986 8.29907 9.27681 7.33869 9.69722C6.37831 10.1176 5.30282 10.1961 4.29159 9.91954C3.28036 9.64297 2.3945 9.02809 1.78174 8.17744C1.16899 7.32678 0.866383 6.29177 0.924381 5.245C0.982379 4.19824 1.39748 3.20299 2.10046 2.42524C2.80344 1.64748 3.7518 1.13423 4.7874 0.971075C5.823 0.807919 6.88323 1.00472 7.79129 1.52866M4.1248 5.04157L5.4998 6.41657L10.0831 1.83323" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+                            </span>
+                            <span class="cmp-login__remember-label">${rememberLabel}</span>
+                        </label>
+                        <a class="cmp-login__forgot"
+                           data-sly-test="${properties.forgotLink}"
+                           href="${properties.forgotLink @ extension='html'}">${forgotLabel}</a>
+                    </div>
+                </div>
+
+                <div class="cmp-login__error" data-cmp-hook-login="error" role="alert" hidden></div>
+
+                <div class="cmp-login__actions">
+                    <button type="submit" class="cmp-login__submit">${submitLabel}</button>
+                    <a class="cmp-login__sso"
+                       data-sly-test="${properties.ssoLink}"
+                       href="${properties.ssoLink @ context='uri'}">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M10.0001 5.99986L5.9998 10.0002M5.9998 5.99986L10.0001 10.0002M14.6672 8.00003C14.6672 11.6822 11.6822 14.6672 7.99996 14.6672C4.31777 14.6672 1.33276 11.6822 1.33276 8.00003C1.33276 4.31783 4.31777 1.33282 7.99996 1.33282C11.6822 1.33282 14.6672 4.31783 14.6672 8.00003Z" stroke="#475569" stroke-width="2" stroke-linecap="round"/></svg>
+                        <span>${ssoLabel}</span>
+                    </a>
+                </div>
+            </form>
+            <p class="cmp-login__help">
+                <span class="cmp-login__help-icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M4.08333 6.41662V4.0831C4.08333 3.30949 4.39062 2.56756 4.93761 2.02054C5.48459 1.47351 6.22645 1.1662 7 1.1662C7.77355 1.1662 8.51541 1.47351 9.06239 2.02054C9.60938 2.56756 9.91667 3.30949 9.91667 4.0831V6.41662M2.91667 6.41662H11.0833C11.7277 6.41662 12.25 6.939 12.25 7.58338V11.667C12.25 12.3114 11.7277 12.8338 11.0833 12.8338H2.91667C2.27233 12.8338 1.75 12.3114 1.75 11.667V7.58338C1.75 6.939 2.27233 6.41662 2.91667 6.41662Z" stroke="#475569" stroke-width="2" stroke-linecap="round"/></svg>
+                </span>
+                <span>${helpText}
+                    <a class="cmp-login__support"
+                       data-sly-test="${properties.supportLink}"
+                       href="${properties.supportLink @ context='uri'}">${supportLabel}</a>
+                </span>
+            </p>
+        </div>
+
+    </div>
+</section>

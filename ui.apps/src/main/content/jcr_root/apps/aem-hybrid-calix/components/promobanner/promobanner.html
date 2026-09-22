@@ -1,0 +1,74 @@
+<!--/*
+    Promo Banner — Figma "Redesign login page" › sales-cta-section (5:203).
+    Styles: promobanner/clientlibs/promobanner.css.
+
+    Promo Banner — hybrid AEM personalization (OOTB HTL + progressive JS).
+
+    Server renders ALL variants up front: the "default" variant is visible
+    immediately, every role-specific variant is pre-rendered but hidden.
+    This means the visitor sees real, meaningful content the instant the
+    HTML arrives — even with JS disabled, slow, or still loading. A pure
+    SPA can't do this: it must download + boot + hydrate a JS bundle
+    before ANY content appears, so a slow network or bundle failure means
+    a blank page.
+
+    The client-side script (clientlib category
+    "aem-hybrid-calix.promobanner") only ever swaps which pre-rendered
+    variant is visible, reading the role from ContextHub (or ?role= URL
+    param, or Granite group fallback). It never blocks first paint.
+
+    Live demo: append ?hybridDemo=spa to the page URL to simulate the
+    "pure SPA" experience on this exact markup (blank/spinner until an
+    artificial bundle+hydrate delay elapses) — great for an in-person
+    side-by-side comparison of hybrid vs. SPA rendering.
+*/-->
+<sly data-sly-use.promo="com.aem.hybrid.calix.core.models.PromoBannerModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !promo.title, classAppend = 'cmp-promobanner'}"></sly>
+
+<section class="cmp-promobanner"
+         data-sly-test="${promo.title}"
+         data-cmp-id="${promo.componentId}"
+         data-cmp-contexthub-key="${promo.contextHubKey}">
+
+    <!-- Default variant (shown until the client script picks a role match) -->
+    <div class="cmp-promobanner__variant cmp-promobanner__variant--active"
+         data-role="default"
+         style="${promo.backgroundStyle @ context='styleString'}">
+        <div class="cmp-promobanner__text">
+            <h3 class="cmp-promobanner__title">${promo.title}</h3>
+            <p  class="cmp-promobanner__message" data-sly-test="${promo.message}">${promo.message}</p>
+        </div>
+        <div class="cmp-promobanner__actions"
+             data-sly-test="${(promo.ctaText && promo.ctaLink) || (promo.secondaryCtaText && promo.secondaryCtaLink)}">
+            <a  class="cmp-promobanner__cta"
+                data-sly-test="${promo.ctaText && promo.ctaLink}"
+                href="${promo.ctaLink}">${promo.ctaText}</a>
+            <a  class="cmp-promobanner__cta cmp-promobanner__cta--secondary"
+                data-sly-test="${promo.secondaryCtaText && promo.secondaryCtaLink}"
+                href="${promo.secondaryCtaLink}">${promo.secondaryCtaText}</a>
+        </div>
+    </div>
+
+    <!-- Role-specific variants (hidden until matched at runtime) -->
+    <sly data-sly-list.variant="${promo.variants}">
+        <div class="cmp-promobanner__variant"
+             data-role="${variant.role}"
+             style="${(variant.backgroundStyle || promo.backgroundStyle) @ context='styleString'}"
+             hidden="hidden">
+            <div class="cmp-promobanner__text">
+                <h3 class="cmp-promobanner__title">${variant.title || promo.title}</h3>
+                <p  class="cmp-promobanner__message" data-sly-test="${variant.message}">${variant.message}</p>
+            </div>
+            <div class="cmp-promobanner__actions"
+                 data-sly-test="${(variant.ctaText && variant.ctaLink) || (variant.secondaryCtaText && variant.secondaryCtaLink)}">
+                <a  class="cmp-promobanner__cta"
+                    data-sly-test="${variant.ctaText && variant.ctaLink}"
+                    href="${variant.ctaLink}">${variant.ctaText}</a>
+                <a  class="cmp-promobanner__cta cmp-promobanner__cta--secondary"
+                    data-sly-test="${variant.secondaryCtaText && variant.secondaryCtaLink}"
+                    href="${variant.secondaryCtaLink}">${variant.secondaryCtaText}</a>
+            </div>
+        </div>
+    </sly>
+</section>

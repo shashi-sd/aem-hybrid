@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="AEM Hybrid Calix - React components local dev" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" />
+    <title>AEM Hybrid Calix - React Components</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #f3f4f6;
+        margin: 0;
+        padding: 40px 20px;
+      }
+      .component-section { max-width: 1100px; margin: 0 auto 32px; }
+      .component-label {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #9ca3af;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!--
+      Local dev only (`npm start` on port 3000 → data comes from public/mock).
+      In AEM these mount points are rendered by the HTL templates:
+        data-component    = resourceType  (looked up in utils/componentRegistry.js)
+        data-component-id = resource.name (matched against pagedata/servicedata)
+    -->
+    <div class="component-section">
+      <div class="component-label">Product Hero (react/product-hero)</div>
+      <div class="react-component"
+           data-component="aem-hybrid-calix/components/react/product-hero"
+           data-component-id="product_hero"></div>
+    </div>
+
+
+    <div class="component-section">
+      <div class="component-label">Profile Card (react/profile-card)</div>
+      <div class="react-component"
+           data-component="aem-hybrid-calix/components/react/profile-card"
+           data-component-id="profilecard"></div>
+    </div>
+
+    <div class="component-section">
+      <div class="component-label">Product List (react/product-list)</div>
+      <div class="react-component"
+           data-component="aem-hybrid-calix/components/react/product-list"
+           data-component-id="productlist"></div>
+    </div>
+
+    <div class="component-section">
+      <div class="component-label">Product Favorite (react/product-favorite)</div>
+      <div class="react-component"
+           data-component="aem-hybrid-calix/components/react/product-favorite"
+           data-component-id="productfavorite"></div>
+    </div>
+
+    <div class="component-section">
+      <div class="component-label">Network Dashboard (react/network-dashboard)</div>
+      <div class="react-component"
+           data-component="aem-hybrid-calix/components/react/network-dashboard"
+           data-component-id="networkdashboard"></div>
+    </div>
+  </body>
+</html>

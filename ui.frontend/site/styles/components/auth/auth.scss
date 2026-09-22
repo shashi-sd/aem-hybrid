@@ -1,0 +1,78 @@
+@use '../../utils/variables/color/colors' as *;
+
+$auth-primary: var(--color-brand-blue, #{$auth-primary-fallback});
+$auth-primary-dark: var(--color-brand-blue-dark, #{$auth-primary-dark-fallback});
+
+header,
+.experiencefragment { position: relative; }
+
+.cmp-auth-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.cmp-auth-control [hidden] {
+    display: none !important;
+}
+
+.cmp-auth-control__user {
+    font-size: 14px;
+    color: $auth-ink;
+    font-weight: 500;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cmp-auth-control__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px;
+    background: transparent;
+    color: $auth-ink;
+    border: none;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity .15s;
+
+    &:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+
+    &--logout {
+        background: transparent;
+        color: $auth-ink;
+
+        &:hover { background: transparent; color: $auth-ink; opacity: 0.8; }
+    }
+
+    &--home {
+        padding: 6px;
+
+        svg { display: block; }
+    }
+}
+
+@media (max-width: 768px) {
+    .cmp-auth-control {
+        padding-right: 0;
+        gap: 6px;
+    }
+
+    .cmp-auth-control__user {
+        display: none;
+    }
+
+    .cmp-auth-control__btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}

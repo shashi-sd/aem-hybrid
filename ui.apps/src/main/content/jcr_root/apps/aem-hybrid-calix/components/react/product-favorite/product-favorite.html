@@ -1,0 +1,14 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = wcmmode.edit, classAppend = 'cmp-product-favorite'}"></sly>
+<div class="react-component"
+     data-component="${resource.resourceType}"
+     data-component-id="${resource.name}"
+     data-resource-type="${resource.resourceType}">
+
+    <div class="cmp-product-favorite cmp-product-favorite--skeleton"
+         aria-hidden="true">
+        <span class="skeleton-block skeleton-pf__icon"></span>
+        <span class="skeleton-block skeleton-pf__label"></span>
+    </div>
+
+</div>

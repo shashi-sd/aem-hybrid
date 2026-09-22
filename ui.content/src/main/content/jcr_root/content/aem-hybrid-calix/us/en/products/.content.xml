@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/aem-hybrid-calix/settings/wcm/templates/page-content"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Products"
+        sling:resourceType="aem-hybrid-calix/components/page"
+        pageTitle="Products">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aem-hybrid-calix/components/container"
+            layout="responsiveGrid">
+            <title
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Our Products"
+                sling:resourceType="aem-hybrid-calix/components/title"
+                type="h1"/>
+            <text
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aem-hybrid-calix/components/text"
+                text="&lt;p>Explore our range of broadband platform solutions designed for service providers.&lt;/p>"
+                textIsRich="true"/>
+        </root>
+    </jcr:content>
+    <revenue-edge/>
+    <gigaspire-systems/>
+    <calix-cloud/>
+    <exa-e7-systems/>
+    <b6-systems/>
+    <e3-e5-systems/>
+    <e7-2-system/>
+    <c7-system/>
+    <e9-2-system/>
+    <e3-2-system/>
+</jcr:root>

@@ -1,0 +1,100 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
+<sly data-sly-call="${templates.placeholder @ isEmpty = wcmmode.edit, classAppend = 'cmp-network-dashboard'}"></sly>
+<div class="react-component cmp-network-dashboard__mount"
+     data-component="${resource.resourceType}"
+     data-component-id="${resource.name}"
+     data-resource-type="${resource.resourceType}">
+
+    <sly data-sly-set.kpiNode="${false}"></sly>
+    <sly data-sly-set.featureNode="${false}"></sly>
+    <sly data-sly-list.child="${resource.children}">
+        <sly data-sly-test="${child.name == 'kpiList'}"><sly data-sly-set.kpiNode="${child}"></sly></sly>
+        <sly data-sly-test="${child.name == 'featureList'}"><sly data-sly-set.featureNode="${child}"></sly></sly>
+    </sly>
+    <sly data-sly-set.defaultKpiLabels="${['Network Uptime', 'Active Subscribers', 'Bandwidth Used', 'Open Alerts']}"></sly>
+    <sly data-sly-set.defaultFeatureTitles="${['Zero-touch provisioning', 'Predictive alerting', 'Multi-POP visibility']}"></sly>
+    <sly data-sly-set.defaultFeatureDescriptions="${['Every new subscriber onboarded in under a minute.', 'ML flags degradation before customers notice.', 'One dashboard across every point of presence.']}"></sly>
+    <section class="cmp-network-dashboard cmp-network-dashboard--${properties.accentColor || 'blue'} cmp-network-dashboard--skeleton"
+             aria-hidden="true">
+            <header class="cmp-network-dashboard__header">
+                <div class="cmp-network-dashboard__titles">
+                    <div class="cmp-network-dashboard__eyebrow"><span class="skeleton-block skeleton-line">${properties.badgeLabel || 'LIVE'}</span></div>
+                    <h2 class="cmp-network-dashboard__title"><span class="skeleton-block skeleton-line">${properties.title || 'Network Operations'}</span></h2>
+                    <p class="cmp-network-dashboard__subtitle"><span class="skeleton-block skeleton-line">${properties.subtitle || 'Real-time view across every POP you operate'}</span></p>
+                </div>
+                <div class="cmp-network-dashboard__health">
+                    <div class="cmp-network-dashboard__health-chip skeleton-block">✓ All systems operational</div>
+                    <span class="cmp-network-dashboard__updated"><span class="skeleton-block skeleton-line">Updated 00:00:00 AM</span></span>
+                </div>
+            </header>
+            <div class="cmp-network-dashboard__kpis">
+                <sly data-sly-test="${kpiNode}">
+                    <div class="cmp-network-dashboard__kpi" data-sly-repeat.kpi="${kpiNode.children}">
+                        <div class="cmp-network-dashboard__kpi-icon"><span class="skeleton-block skeleton-line">•</span></div>
+                        <div class="cmp-network-dashboard__kpi-body">
+                            <div class="cmp-network-dashboard__kpi-label"><span class="skeleton-block skeleton-line">${kpi.valueMap.label || kpi.valueMap.key}</span></div>
+                            <div class="cmp-network-dashboard__kpi-value"><span class="skeleton-block skeleton-line">00.0</span></div>
+                        </div>
+                    </div>
+                </sly>
+                <sly data-sly-test="${!kpiNode}">
+                    <div class="cmp-network-dashboard__kpi" data-sly-repeat.label="${defaultKpiLabels}">
+                        <div class="cmp-network-dashboard__kpi-icon"><span class="skeleton-block skeleton-line">•</span></div>
+                        <div class="cmp-network-dashboard__kpi-body">
+                            <div class="cmp-network-dashboard__kpi-label"><span class="skeleton-block skeleton-line">${label}</span></div>
+                            <div class="cmp-network-dashboard__kpi-value"><span class="skeleton-block skeleton-line">00.0</span></div>
+                        </div>
+                    </div>
+                </sly>
+            </div>
+            <div class="cmp-network-dashboard__main">
+                <div class="cmp-network-dashboard__panel cmp-network-dashboard__panel--trend">
+                    <div class="cmp-network-dashboard__panel-head">
+                        <h3><span class="skeleton-block skeleton-line">Traffic — last 12 intervals</span></h3>
+                        <span class="cmp-network-dashboard__panel-sub"><span class="skeleton-block skeleton-line">Aggregated across all POPs</span></span>
+                    </div>
+                    <div class="cmp-network-dashboard__sparkline skeleton-block"></div>
+                    <div class="cmp-network-dashboard__legend">
+                        <span><span class="skeleton-block skeleton-line">Throughput</span></span>
+                        <span><span class="skeleton-block skeleton-line">Peak 000 • Avg 000</span></span>
+                    </div>
+                </div>
+                <div class="cmp-network-dashboard__panel cmp-network-dashboard__panel--alerts">
+                    <div class="cmp-network-dashboard__panel-head">
+                        <h3><span class="skeleton-block skeleton-line">Recent alerts</span></h3>
+                        <span class="cmp-network-dashboard__panel-sub"><span class="skeleton-block skeleton-line">0 in the last hour</span></span>
+                    </div>
+                    <ul class="cmp-network-dashboard__alerts">
+                        <li class="cmp-network-dashboard__alert" data-sly-repeat="${[1, 2]}">
+                            <span class="cmp-network-dashboard__alert-severity skeleton-block">warning</span>
+                            <div class="cmp-network-dashboard__alert-body">
+                                <div class="cmp-network-dashboard__alert-title"><span class="skeleton-block skeleton-line">Elevated latency on edge router</span></div>
+                                <div class="cmp-network-dashboard__alert-meta"><span class="skeleton-block skeleton-line">POP-000 · 0m ago</span></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cmp-network-dashboard__features">
+                <sly data-sly-test="${featureNode}">
+                    <div class="cmp-network-dashboard__feature" data-sly-repeat.feature="${featureNode.children}">
+                        <div class="cmp-network-dashboard__feature-icon"><span class="skeleton-block skeleton-line">★</span></div>
+                        <div class="cmp-network-dashboard__feature-title"><span class="skeleton-block skeleton-line">${feature.valueMap.title}</span></div>
+                        <div class="cmp-network-dashboard__feature-desc"><span class="skeleton-block skeleton-line">${feature.valueMap.description}</span></div>
+                    </div>
+                </sly>
+                <sly data-sly-test="${!featureNode}">
+                    <div class="cmp-network-dashboard__feature" data-sly-repeat.title="${defaultFeatureTitles}">
+                        <div class="cmp-network-dashboard__feature-icon"><span class="skeleton-block skeleton-line">★</span></div>
+                        <div class="cmp-network-dashboard__feature-title"><span class="skeleton-block skeleton-line">${title}</span></div>
+                        <div class="cmp-network-dashboard__feature-desc"><span class="skeleton-block skeleton-line">${defaultFeatureDescriptions[titleList.index]}</span></div>
+                    </div>
+                </sly>
+            </div>
+            <footer class="cmp-network-dashboard__footer">
+                <span class="cmp-network-dashboard__footer-note"><span class="skeleton-block skeleton-line">${properties.footerNote || 'Metrics refresh every 30 seconds'}</span></span>
+            <span class="cmp-network-dashboard__cta skeleton-block">${properties.ctaLabel || 'Open Full Console'} →</span>
+        </footer>
+    </section>
+
+</div>

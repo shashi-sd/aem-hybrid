@@ -1,0 +1,28 @@
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html"></sly>
+<div class="react-component"
+     data-component="${resource.resourceType}"
+     data-component-id="${resource.name}"
+     data-resource-type="${resource.resourceType}">
+    <section class="cmp-product-hero cmp-product-hero--skeleton" aria-hidden="true">
+        <div class="cmp-product-hero__content">
+            <nav class="cmp-product-hero__breadcrumbs" data-sly-test="${properties.showBreadcrumbs != false}">
+                <ol class="cmp-product-hero__breadcrumb-list">
+                    <li class="cmp-product-hero__breadcrumb"><span class="skeleton-block skeleton-text skeleton-text--w220">&nbsp;</span></li>
+                </ol>
+            </nav>
+            <div class="cmp-product-hero__title-group">
+                <span class="cmp-product-hero__eyebrow skeleton-block" data-sly-test="${properties.eyebrow}">${properties.eyebrow}</span>
+                <h1 class="cmp-product-hero__title"><span class="skeleton-block skeleton-line">${properties.title || currentPage.title}</span></h1>
+                <p class="cmp-product-hero__description" data-sly-test="${properties.description}"><span class="skeleton-block skeleton-line">${properties.description}</span></p>
+            </div>
+            <div class="cmp-product-hero__actions" data-sly-test="${properties.showFavorite != false || (properties.ctaText && properties.ctaLink)}">
+                <div class="cmp-product-favorite cmp-product-favorite--skeleton" data-sly-test="${properties.showFavorite != false}">
+                    <span class="skeleton-block skeleton-pf__icon"></span>
+                    <span class="skeleton-block skeleton-pf__label"></span>
+                </div>
+                <span class="cmp-product-hero__cta skeleton-block" data-sly-test="${properties.ctaText && properties.ctaLink}">${properties.ctaText}</span>
+            </div>
+        </div>
+        <div class="cmp-product-hero__media"></div>
+    </section>
+</div>

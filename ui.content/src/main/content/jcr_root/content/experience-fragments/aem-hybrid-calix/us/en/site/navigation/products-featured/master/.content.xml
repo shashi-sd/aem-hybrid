@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        cq:tags="[]"
+        cq:template="/conf/aem-hybrid-calix/settings/wcm/templates/xf-web-variation"
+        cq:xfMasterVariation="{Boolean}true"
+        cq:xfVariantType="web"
+        jcr:title="Products Featured"
+        sling:resourceType="aem-hybrid-calix/components/xfpage">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aem-hybrid-calix/components/container"
+            layout="simple">
+            <featured
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aem-hybrid-calix/components/navigation-featured-xf"
+                title="Explore the Calix portfolio"
+                description="Access systems, subscriber Wi-Fi and cloud software that accelerate subscriber operations and network modernization."
+                ctaLabel="View all products"
+                ctaUrl="/content/aem-hybrid-calix/us/en/products"/>
+        </root>
+    </jcr:content>
+</jcr:root>

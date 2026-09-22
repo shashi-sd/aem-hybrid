@@ -1,0 +1,9 @@
+{
+    "auth.loginform.selector.paths": [
+        "/content/aem-hybrid-calix/us/en"
+    ],
+    "auth.loginform.default": "/content/aem-hybrid-calix/us/en/login.html",
+    "auth.loginform.mapping": [
+        "/content/aem-hybrid-calix/us/en:/content/aem-hybrid-calix/us/en/login.html"
+    ]
+}

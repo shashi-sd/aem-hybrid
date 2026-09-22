@@ -1,0 +1,187 @@
+@use '../abstracts' as *;
+
+.calix-site-header,
+.experiencefragment:has(> .cmp-experiencefragment--header) {
+    z-index: 4;
+    @include breakpoint(medium-max) {
+        position: sticky;
+        top: 0;
+    }
+}
+
+.calix-site-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.8);
+    z-index: 3;
+
+    &--visible {
+        display: block;
+    }
+
+    @include breakpoint(large) {
+        display: none;
+    }
+}
+
+.cmp-header {
+    $block: &;
+    border-bottom: 1px solid var(--color-light-gray);
+    @include breakpoint(medium-max) {
+        background-color: $white;
+    }
+    &__wrapper {
+        @include grid--full-bleed;
+        grid-template-rows: auto;
+        @include breakpoint(medium-max) {
+            border-bottom: 1px solid var(--color-gray-2);
+            position: relative;
+            height: rem(81);
+        }
+        @include breakpoint(large) {
+            grid-template-rows: rem(50) auto;
+            position: relative;
+            min-height: rem(190);
+            transition: all .3s ease;
+            #{$block}--floating & {
+                min-height: rem(138);
+            }
+        }
+    }
+    &__menu-bar {
+        @include grid--full-bleed;
+        grid-template-rows: auto;
+        grid-column: 1/10;
+        grid-row: 1;
+        position: relative;
+        @include breakpoint(medium-max) {
+            grid-column: 1/14;
+            grid-template-rows: rem(81) auto;
+        }
+        @include breakpoint(large) {
+            background-color: $white;
+            grid-column: 1 / 26;
+            grid-row: 2;
+            z-index: 2;
+        }
+        #{$block}--floating & {
+            @include breakpoint(large) {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 4;
+                width: 100%;
+                box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.08);
+            }
+        }
+    }
+    &__util-nav,
+    &__logo {
+        @include breakpoint(medium-max) {
+            justify-self: start;
+        }
+        img {
+            max-height: rem(36);
+        }
+    }
+    &__util-nav {
+        grid-row: 1;
+        grid-column: 8 / 9;
+        justify-self: end;
+        z-index: 1;
+        @include breakpoint(medium-max) {
+            align-self: start;
+        }
+        @include breakpoint(medium) {
+            grid-column: 9 / 13;
+        }
+        @include breakpoint(large) {
+            grid-row: 1 / 2;
+            grid-column: 1 / 26;
+            justify-self: stretch;
+            z-index: 3;
+        }
+    }
+    &__logo {
+        grid-row: 1;
+        grid-column: 2 / 5;
+        align-self: center;
+
+        @include breakpoint(medium) {
+            grid-column: 2 / 7;
+        }
+        @include breakpoint(large) {
+            grid-row: 2 / 2;
+            grid-column: 2 / 9;
+            padding: rem(40) 0 rem(60) 0;
+            transition: all .3s ease;
+            #{$block}--floating & {
+                padding: rem(28) 0 rem(18) 0;
+            }
+        }
+
+        img {
+            aspect-ratio: 10/3;
+            width: auto;
+        }
+    }
+    &__nav {
+        grid-row: 2;
+        grid-column: 1 / 10;
+        display: none;
+        &--expanded {
+            display: block;
+            max-height: calc(73.5vh - var(--header-cta-height, 0px));
+            max-height: calc(73.5dvh - var(--header-cta-height, 0px));
+            overflow-y: auto;
+        }
+        @include breakpoint(medium) {
+            grid-column: 1 / 14;
+        }
+        @include breakpoint(large) {
+            display: block;
+            grid-row: 2 / 2;
+            grid-column: 8 / 25;
+        }
+    }
+    &__cta {
+        white-space: nowrap;
+        align-self: center;
+        padding: rem(40) 0 rem(60) 0;
+        transition: all .3s ease;
+        #{$block}--floating & {
+            padding: rem(28) 0 rem(18) 0;
+        }
+        & .cmp-button--primary {
+            padding: rem(10) rem(16);
+            line-height: 1;
+        }
+        @include breakpoint(large) {
+            grid-row: 2/2;
+            grid-column: 24;
+        }
+
+        @include breakpoint(medium-max) {
+            display: none;
+            background-color: var(--color-white);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: rem(16);
+        }
+        &--visible {
+            display: block;
+        }
+    }
+}
+
+.aem-AuthorLayer-Preview, .aem-AuthorLayer-Edit {
+    #consent_blackbar {
+        display: none;
+    }
+}

@@ -1,0 +1,24 @@
+<div data-sly-use.model="com.aem.hybrid.calix.core.models.site.NavigationFeaturedXFModel"
+     data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     id="${component.id}"
+     class="cmp-navigation-section-featured-xf"
+     data-calix-cmp-is="navigation-section-featured-xf">
+    <div data-sly-test="${!model.empty}"
+         class="cmp-navigation-section-featured-xf__wrapper">
+        <div data-sly-test="${model.imagePath}"
+             class="cmp-navigation-section-featured-xf__image">
+            <img src="${model.imagePath @ context='uri'}" alt="${model.imageAlt}" loading="lazy"/>
+        </div>
+        <div class="cmp-navigation-section-featured-xf__title type-t1">${model.title @ context='text'}</div>
+        <div data-sly-test="${model.description}"
+             class="cmp-navigation-section-featured-xf__description type-t7">${model.description @ context='text'}</div>
+        <div data-sly-test="${model.ctaLabel}"
+             class="cmp-navigation-section-featured-xf__link-container">
+            <a href="${model.ctaUrl @ context='uri'}"
+               target="${model.ctaTarget}"
+               class="cmp-navigation-section-featured-xf__link type-t8">${model.ctaLabel @ context='text'}</a>
+        </div>
+    </div>
+    <sly data-sly-call="${templates.placeholder @ isEmpty = model.empty, classAppend='cmp-navigation-featured-xf'}"></sly>
+</div>

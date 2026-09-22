@@ -1,0 +1,149 @@
+@use "../../../../site/styles/utils/variables/color/colors" as *;
+
+$pc-font-heading: var(--portal-font-heading, 'Outfit', sans-serif);
+$pc-font-body: var(--portal-font-body, 'Geist', sans-serif);
+
+.cmp-product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  padding: 24px;
+  background: $color-white;
+  border: 1px solid $portal-border;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.05);
+  font-family: $pc-font-body;
+  box-sizing: border-box;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: $portal-surface;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    color: $portal-slate;
+  }
+
+  &__status {
+    display: flex;
+    flex: 0 0 24px;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+    border-radius: 12px;
+    background: $portal-surface;
+
+    svg {
+      display: block;
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: $pc-font-heading;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: normal;
+    color: $portal-ink-strong;
+  }
+
+  &__description {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: normal;
+    color: $portal-slate;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid $portal-border;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: normal;
+    color: $portal-primary;
+    text-decoration: none;
+
+    &:hover span:first-child {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $portal-primary;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  }
+
+  &__link-icon {
+    display: flex;
+    width: 12px;
+    height: 12px;
+
+    svg {
+      display: block;
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  &__favorite {
+    display: flex;
+    flex: 0 0 14px;
+    width: 14px;
+    height: 14px;
+
+    svg {
+      display: block;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &--highlighted {
+    border: 1.5px solid $portal-orange;
+
+    .cmp-product-card__badge,
+    .cmp-product-card__status {
+      background: $portal-orange-soft;
+    }
+
+    .cmp-product-card__badge {
+      color: $portal-orange;
+    }
+  }
+}

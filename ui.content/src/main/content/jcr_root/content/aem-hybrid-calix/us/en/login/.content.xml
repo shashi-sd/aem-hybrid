@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:mixinTypes="[rep:AccessControllable]"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2026-09-11T20:28:31.789+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/aem-hybrid-calix/settings/wcm/templates/page-content"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Login"
+        sling:resourceType="aem-hybrid-calix/components/page"
+        hideInNav="{Boolean}true"
+        pageTitle="Sign in - AEM Hybrid Calix">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aem-hybrid-calix/components/container"
+            layout="responsiveGrid">
+            <breadcrumb
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aem-hybrid-calix/components/breadcrumb"
+                hideCurrent="false"
+                showHidden="false"/>
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aem-hybrid-calix/components/container"
+                layout="responsiveGrid">
+                <container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aem-hybrid-calix/components/container"
+                    layout="responsiveGrid">
+                    <login
+                        jcr:lastModified="{Date}2026-09-11T20:28:31.785+05:30"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="aem-hybrid-calix/components/login"
+                        hideRememberMe="false"
+                        imageAlt="Calix Portal"
+                        imageSrc="https://www.calix.com/adobe/dynamicmedia/deliver/dm-aid--5d65a03d-d8d6-45e2-8924-b3be734819cc/marketing-ai.jpg?width=960&amp;quality=85&amp;preferwebp=true"
+                        line1="Welcome to the Calix insider portal."
+                        line2="Please log in to continue."
+                        redirectPath="/content/aem-hybrid-calix/us/en/hybrid-demo"
+                        submitLabel="Log In"
+                        title="Calix Portal">
+                        <cq:responsive jcr:primaryType="nt:unstructured">
+                            <default
+                                jcr:primaryType="nt:unstructured"
+                                offset="0"
+                                width="12"/>
+                        </cq:responsive>
+                    </login>
+                </container>
+            </container>
+        </root>
+    </jcr:content>
+    <rep:policy/>
+</jcr:root>

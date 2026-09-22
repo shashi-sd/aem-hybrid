@@ -1,0 +1,123 @@
+@use '../abstracts' as *;
+
+.cmp-navigation-section-simple {
+  $block: &;
+  $layout-breakpoint: large;
+  $layout-breakpoint-small: medium-max;
+  @include breakpoint($layout-breakpoint) {
+    min-height: 500px;
+    display: flex;
+    align-items: stretch;
+  }
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    max-height: 50vh;
+    max-height: 50dvh;
+    overflow: auto;
+    @include breakpoint($layout-breakpoint) {
+      max-height: none;
+    }
+  }
+  &__section {
+    flex: 1;
+    height: 100%;
+  }
+  &__links {
+    background: var(--gradient-medium-blue-to-white-0-deg, linear-gradient(326deg, #E0F0FA 7.79%, rgba(255, 255, 255, 0.00) 123.11%));
+    @include breakpoint($layout-breakpoint) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &__feature {
+    display: none;
+    padding: rem(48);
+    @include breakpoint($layout-breakpoint) {
+      display: block;
+    }
+  }
+
+  &__linkList {
+      padding: rem(24) rem(20) rem(16);
+    @include breakpoint($layout-breakpoint) {
+      padding: rem(48);
+      column-count: 3;
+      column-gap: rem(32);
+    }
+
+    @include breakpoint(xlarge) {
+      padding-left: rem(128);
+    }
+  }
+  &__footerLinks {
+    border-top: 1px solid var(--color-gray-2);
+    padding: rem(16) rem(36) rem(24);
+    a {
+      display: block;
+      color: var(--color-dark-blue);
+      @include breakpoint($layout-breakpoint-small) {
+        padding: rem(8) 0;
+      }
+      &:hover {
+        font-weight: 500;
+      }
+    }
+    @include breakpoint($layout-breakpoint) {
+      padding: rem(16) rem(48);
+      display: flex;
+      column-gap: rem(16);
+      font-size: rem(14);
+      margin-top: auto;
+    } 
+    @include breakpoint(xlarge) {
+      padding-left: rem(128);
+    } 
+  }
+  &__linkListCol {
+    break-inside: avoid-column;
+    padding: rem(16) rem(16) rem(32);
+    &:not(:first-child) {
+      @include breakpoint($layout-breakpoint-small) {
+        border-top: 1px dashed var(--color-gray-2);
+      }
+    }
+    @include breakpoint($layout-breakpoint) {
+      padding: 0;
+      border-top: none;
+      margin-bottom: rem(48);
+    }
+
+    &__heading {
+      text-transform: capitalize;
+      color: var(--color-gray-4);
+      @include get-font(t8);
+      margin-bottom: rem(16)
+    }
+    &__list-item {
+      a {
+        display: inline-block;
+        padding: rem(12) 0;
+        text-decoration: none;
+        font-weight: 500;
+        color: var(--color-dark-blue);
+        transform: translateX(0);
+        transition: transform 0.25s ease, color 0.25s ease;        
+        @include breakpoint($layout-breakpoint) {
+          padding: rem(8) 0;
+        }
+        &:hover,
+        &:focus-visible {
+          color: var(--color-calix-blue);
+          transform: translateX(10px);
+        }
+      }
+      & + #{$block}__linkListCol__list-item {
+        @include breakpoint($layout-breakpoint) {
+          margin-top: rem(16);
+        }
+      }
+    }
+  }
+}

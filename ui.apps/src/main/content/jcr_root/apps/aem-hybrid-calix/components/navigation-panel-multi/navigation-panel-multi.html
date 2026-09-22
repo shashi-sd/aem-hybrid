@@ -1,0 +1,125 @@
+<sly data-sly-use.model="com.aem.hybrid.calix.core.models.site.NavigationPanelMultilevel"
+     data-sly-use.component="com.adobe.cq.wcm.core.components.models.Component"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-set.empty="${model.empty}">
+    <div class="cmp-accordion__header">
+        <button
+                id="accordion-${component.id}-button"
+                class="cmp-accordion__button"
+                type="button"
+                aria-controls="accordion-${component.id}-panel"
+                data-cmp-hook-accordion="button">
+                    <span class="cmp-accordion__title">${model.panelTitle @ context='text'}</span>
+            <span class="cmp-accordion__icon"></span>
+        </button>
+    </div>
+    <div data-cmp-hook-accordion="panel"
+         class="cmp-accordion__panel cmp-accordion__panel--hidden"
+         id="accordion-${component.id}-panel"
+         role="region"
+         aria-labelledby="accordion-${component.id}-button"
+         aria-hidden="true">
+        <div class="cmp-accordion__panel-inner">
+            <div class="cmp-accordion__panel-contents">
+                <div data-sly-set.mainLinks="${model.mainLinks}"
+                     data-sly-test="${mainLinks}"
+                     class="cmp-navigation-section-multilevel"
+                     data-calix-cmp-is="navigation-section-multilevel">
+                    <div class="cmp-navigation-section-multilevel__wrapper">
+                        <section class="cmp-navigation-section-multilevel__section cmp-navigation-section-multilevel__section--nav">
+                            <div class="cmp-navigation-section-multilevel__menu-col">
+                                <div class="cmp-navigation-section-multilevel__menu-container">
+                                    <ul data-sly-test="${model.first || (mainLinks && mainLinks.size > 0)}"
+                                         class="cmp-navigation-section-multilevel__menu-list">
+                                        <li data-sly-test="${model.first && model.first.valid}"
+                                            data-sly-use.template="multilevel_menu.html"
+                                            class="cmp-navigation-section-multilevel__menu-item cmp-navigation-section-multilevel__menu-item--top">
+                                            <sly data-sly-call="${template.first @ item=model.first}"></sly>
+                                        </li>
+                                        <li  data-sly-repeat.item="${mainLinks}"
+                                             class="cmp-navigation-section-multilevel__menu-item ${item.links && item.links.size > 0 ? 'has-submenu' : ''}">
+                                            <button class="cmp-navigation-section-multilevel__menu-button "
+                                                    id="${['menu-button-', itemList.index] @ join=''}"
+                                                    aria-expanded="false"
+                                                    aria-controls="${(item.links && itemList.index > 0 ? ['submenu-', itemList.index]  : ['menu-xf-', itemList.index]) @ join=''}">
+                                            <span data-sly-test="${item.eyebrow}"
+                                                  class="cmp-navigation-section-multilevel__menu-eyebrow type-t8">${item.eyebrow @ context='text'}</span>
+                                            <span data-sly-test="${item.heading}"
+                                                  class="cmp-navigation-section-multilevel__menu-title type-t4">${item.heading @ context='text'}</span>
+                                            </button>
+                                            <div data-sly-test="${item.fragmentVariationPath && !item.links}"
+                                                 class="cmp-navigation-section-multilevel__menu-xf-container"
+                                                 id="${['menu-xf-', itemList.index] @ join=''}"
+                                                 aria-labelledby="${['menu-button-', itemList.index] @ join=''}">
+                                                <div class="cmp-navigation-section-multilevel__back">
+                                                    <button class="cmp-navigation-section-multilevel__back-btn cmp-navigation-section-multilevel__back-btn--l2">${item.heading}</button>
+                                                </div>
+                                                <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
+                                                     data-sly-test=${item.fragmentVariationPath}
+                                                     data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
+                                                     data-sly-resource="${@path=item.fragmentVariationPath, selectors=selector, wcmmode='disabled'}"
+                                                     id="${fragment.id}"
+                                                     class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}"></div>
+                                            </div>
+                                            <div data-sly-test="${item.links}"
+                                                 class="cmp-navigation-section-multilevel__submenu-container"
+                                                 id="submenu-${itemList.index}"
+                                                 aria-labelledby="menu-button-${itemList.index}">
+                                                <div class="cmp-navigation-section-multilevel__back">
+                                                    <button class="cmp-navigation-section-multilevel__back-btn cmp-navigation-section-multilevel__back-btn--l2">
+                                                        ${item.heading @ context='text'}
+                                                    </button>
+                                                </div>
+                                                <ul data-sly-set.childrenLinks="${item.links}"
+                                                    class="cmp-navigation-section-multilevel__submenu-list">
+                                                    <li data-sly-repeat.subItem="${childrenLinks}"
+                                                        class="cmp-navigation-section-multilevel__submenu-item">
+                                                        <button
+                                                                class="cmp-navigation-section-multilevel__menu-button cmp-navigation-section-multilevel__menu-button--l3"
+                                                                aria-expanded="false"
+                                                                id="menu-${itemList.index}-submenu-button-${subItemList.index}"
+                                                                aria-controls="menu-${itemList.index}-submenu-xf-${subItemList.index}">
+                                                            <span class="cmp-navigation-section-multilevel__menu-title type-t4">${subItem.label  @ context='text'}</span>
+                                                        </button>
+                                                        <div class="cmp-navigation-section-multilevel__submenu-xf-container" 
+                                                            id="menu-${itemList.index}-submenu-xf-${subItemList.index}"
+                                                            aria-labelledby="menu-${itemList.index}-submenu-button-${subItemList.index}">
+                                                            <div class="cmp-navigation-section-multilevel__back">
+                                                                <button class="cmp-navigation-section-multilevel__back-btn cmp-navigation-section-multilevel__back-btn--l3">
+                                                                    ${subItem.label  @ context='text'}
+                                                                </button>
+                                                            </div>
+                                                            <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
+                                                                 data-sly-test=${subItem.fragmentVariationPath}
+                                                                 data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
+                                                                 data-sly-resource="${@path=subItem.fragmentVariationPath, selectors=selector, wcmmode='disabled'}"
+                                                                 id="${fragment.id}"
+                                                                 class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}"></div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div data-sly-test="${model.bottomLinks}"
+                                     class="cmp-navigation-section-multilevel__footerLinks">
+                                    <a data-sly-repeat.item="${model.bottomLinks}"
+                                       href="${item.url @ context='uri'}" target="${item.target}">${item.label @ context='text'}</a>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="cmp-navigation-section-multilevel__section cmp-navigation-section-multilevel__section--feature">
+                            <div data-sly-use.fragment="com.adobe.cq.wcm.core.components.models.ExperienceFragment"
+                                 data-sly-test=${fragment.configured}
+                                 data-sly-set.selector="content.${request.requestPathInfo.selectorString}"
+                                 data-sly-resource="${@path=fragment.localizedFragmentVariationPath, selectors=selector, wcmmode='disabled'}"
+                                 id="${fragment.id}"
+                                 class="cmp-experiencefragment cmp-experiencefragment--${fragment.name}"></div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</sly>

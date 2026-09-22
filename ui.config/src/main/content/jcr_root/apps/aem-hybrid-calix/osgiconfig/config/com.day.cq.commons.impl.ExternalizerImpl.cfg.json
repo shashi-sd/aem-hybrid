@@ -1,0 +1,7 @@
+{
+    "externalizer.domains": [
+        "local http://localhost:4502",
+        "author http://localhost:4502",
+        "publish https://www.calix.example.com"
+    ]
+}

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        cq:tags="[]"
+        cq:template="/conf/aem-hybrid-calix/settings/wcm/templates/xf-web-variation"
+        cq:xfMasterVariation="{Boolean}true"
+        cq:xfVariantType="web"
+        jcr:title="Footer"
+        sling:resourceType="aem-hybrid-calix/components/xfpage">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="aem-hybrid-calix/components/container"
+            layout="simple">
+            <footer
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="aem-hybrid-calix/components/footer"
+                logo="/content/dam/aem-hybrid-calix/calix-logo.svg"
+                logoAlt="Calix"
+                copyright="© 2026 Calix, Inc. All rights reserved.">
+                <solutions
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aem-hybrid-calix/components/footer-column-item"
+                    cq:panelTitle="Solutions"
+                    title="Solutions">
+                    <links
+                        jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            label="Calix One platform"
+                            url="/content/aem-hybrid-calix/us/en/solutions"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            label="Success services"
+                            url="/content/aem-hybrid-calix/us/en/solutions/subscriber-experience"/>
+                    </links>
+                </solutions>
+                <company
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aem-hybrid-calix/components/footer-column-item"
+                    cq:panelTitle="Company"
+                    title="Company">
+                    <links
+                        jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            label="About Calix"
+                            url="/content/aem-hybrid-calix/us/en/about"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            label="News and media"
+                            url="/content/aem-hybrid-calix/us/en/blogs"/>
+                        <item2
+                            jcr:primaryType="nt:unstructured"
+                            label="Careers"
+                            url="/content/aem-hybrid-calix/us/en/about/careers"/>
+                        <item3
+                            jcr:primaryType="nt:unstructured"
+                            label="Sustainability"
+                            url="#"/>
+                        <item4
+                            jcr:primaryType="nt:unstructured"
+                            label="Trust Center"
+                            url="#"/>
+                    </links>
+                </company>
+                <resources
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aem-hybrid-calix/components/footer-column-item"
+                    cq:panelTitle="Resources"
+                    title="Resources">
+                    <links
+                        jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            label="Blog"
+                            url="/content/aem-hybrid-calix/us/en/blogs"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            label="Community and support"
+                            url="#"/>
+                        <item2
+                            jcr:primaryType="nt:unstructured"
+                            label="TAC TV"
+                            url="#"/>
+                        <item3
+                            jcr:primaryType="nt:unstructured"
+                            label="Calix University"
+                            url="#"/>
+                    </links>
+                </resources>
+                <connect
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="aem-hybrid-calix/components/footer-column-item"
+                    cq:panelTitle="Connect with Calix"
+                    title="Connect with Calix">
+                    <links
+                        jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            label="Contact Calix"
+                            url="#"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            label="Sign-up for Calix communications"
+                            url="#"/>
+                    </links>
+                    <icons
+                        jcr:primaryType="nt:unstructured">
+                        <item0
+                            jcr:primaryType="nt:unstructured"
+                            icon="linkedin"
+                            url="https://www.linkedin.com/company/calix-inc-"/>
+                        <item1
+                            jcr:primaryType="nt:unstructured"
+                            icon="twitter"
+                            url="https://x.com/CalixInc"/>
+                        <item2
+                            jcr:primaryType="nt:unstructured"
+                            icon="facebook"
+                            url="https://www.facebook.com/CalixInc"/>
+                    </icons>
+                </connect>
+                <bottomLinks
+                    jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Legal"
+                        url="#"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="Privacy"
+                        url="#"/>
+                    <item2
+                        jcr:primaryType="nt:unstructured"
+                        label="Security"
+                        url="#"/>
+                    <item3
+                        jcr:primaryType="nt:unstructured"
+                        label="Terms of Use"
+                        url="#"/>
+                    <item4
+                        jcr:primaryType="nt:unstructured"
+                        label="Trademarks"
+                        url="#"/>
+                    <item5
+                        jcr:primaryType="nt:unstructured"
+                        label="Cookie Policy"
+                        url="#"/>
+                </bottomLinks>
+            </footer>
+        </root>
+    </jcr:content>
+</jcr:root>

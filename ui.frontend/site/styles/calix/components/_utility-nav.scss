@@ -1,0 +1,125 @@
+@use '../abstracts' as *;
+@use "sass:math";
+
+.cmp-utility-nav {
+    $block: &;
+    height: rem(81);
+    @include breakpoint(large) {
+        width: 100%;
+        height: rem(50);
+        background: var(--portal-primary, #0b38db);
+        @include grid--constrained-container;
+    }
+        
+    &__wrapper {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        column-gap: rem(8);
+        @include breakpoint(large) {
+            grid-column: 1 / -1;
+        }
+
+    }
+    &__links {
+        display: none;
+        height: 100%;
+        @include breakpoint(large) {
+            display: flex;
+            align-items: center;
+            margin-right: auto;
+            margin-left: rem(-8);
+        }
+    }
+    &__login {
+        margin-left: rem(16);
+        flex: 0 1 auto;
+    }
+    &__menuToggle {
+        $icon: '.cmp-button__icon';
+        #{$icon} {
+            width: rem(32);
+            height: rem(32);
+            background-color: var(--color-black);
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cg clip-path='url(%23clip0_10034_186328)'%3E%3Cpath d='M27 9H5C4.44772 9 4 9.44772 4 10C4 10.5523 4.44772 11 5 11H27C27.5523 11 28 10.5523 28 10C28 9.44772 27.5523 9 27 9Z' fill='black'/%3E%3Cpath d='M27 15H5C4.44772 15 4 15.4477 4 16C4 16.5523 4.44772 17 5 17H27C27.5523 17 28 16.5523 28 16C28 15.4477 27.5523 15 27 15Z' fill='black'/%3E%3Cpath d='M27 21H5C4.44772 21 4 21.4477 4 22C4 22.5523 4.44772 23 5 23H27C27.5523 23 28 22.5523 28 22C28 21.4477 27.5523 21 27 21Z' fill='black'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_10034_186328'%3E%3Crect width='32' height='32' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+        }
+        & .cmp-button {
+            padding: 0;
+            margin: rem(10) rem(16);
+            border-radius: 0;
+
+            &:hover {
+                #{$icon} {
+                    background-color: var(--color-calix-blue);
+                }
+            }
+        }
+        @include breakpoint(large) {
+            display: none;
+        }
+        &--expanded {
+            #{$icon} {
+                mask-image: url('../styles/calix/images/calix-icon-close.svg');
+            }
+        }
+    }
+    &__link {
+        $link: &;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        color: var(--color-white);
+        text-decoration: none;
+        @include breakpoint(large) {
+            padding: rem(8);
+        }
+        &:hover {
+            #{$link} {
+                &--text {
+                    @include breakpoint(large) {
+                        text-decoration: underline;
+                    }
+                }
+                &--icon {
+                    @include breakpoint(medium-max) {
+                        background-color: var(--color-calix-blue);
+                    }
+                }
+            }
+        }
+        &:focus-visible {
+            outline: 2px solid var(--color-dark-orange);
+            @include breakpoint(medium-max) {
+                outline-offset: rem(8);
+            }
+            @include breakpoint(large) {
+                outline: 2px solid var(--color-white);
+            }
+        }
+        &--text {
+            display: none;
+            @include get-font(t8);
+            color: var(--color-white);
+            @include breakpoint(large) {
+                display: block;
+            }
+        }
+        &--icon {
+            display: block;
+            width: rem(22);
+            height: rem(22);
+            background-color: var(--color-black);
+            mask-image: url('../styles/calix/images/calix-icon-avatar.svg');
+            mask-repeat: no-repeat;
+            mask-size: cover;
+            @include breakpoint(large) {
+                width: rem(16);
+                height: rem(16);
+                margin-left: rem(8);
+                background-color: var(--color-white);
+            }
+        }
+    }
+}
+

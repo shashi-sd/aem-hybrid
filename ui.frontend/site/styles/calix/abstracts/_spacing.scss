@@ -1,0 +1,10 @@
+@import './tokens/spacing_definitions';
+
+@function get-space($size) {
+    @if map-has-key($space-scale, $size) {
+        @return #{map-get($space-scale, $size)}px;
+    } @else {
+        @warn 'Unfortunately, no value could be retrieved from #{$size}. Available sizes are: #{map-keys($space-scale)}.';
+        @return '';
+    }
+}

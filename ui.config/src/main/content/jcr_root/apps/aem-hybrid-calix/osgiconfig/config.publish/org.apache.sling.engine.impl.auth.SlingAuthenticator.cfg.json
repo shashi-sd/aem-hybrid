@@ -1,0 +1,6 @@
+{
+    "sling.auth.requirements": [
+        "+/content/aem-hybrid-calix/us/en",
+        "-/content/aem-hybrid-calix/us/en/login"
+    ]
+}

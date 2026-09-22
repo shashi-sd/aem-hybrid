@@ -1,0 +1,364 @@
+@use '../rems' as *;
+
+$font-extra-light: "DM Sans Extra Light", sans-serif;
+$font-thin: "DM Sans Thin", sans-serif;
+$font-reg: "DM Sans", sans-serif;
+$font-medium: "DM Sans Medium", sans-serif;
+$font-semi-bold: "DM Sans Semibold", sans-serif;
+$font-bold: "DM Sans Bold", sans-serif;
+$font-extra-bold: "DM Sans Extra Bold", sans-serif;
+
+$type-map: (
+  h1: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(72),
+      font-weight: 500,
+      line-height: 1.1,
+      letter-spacing: -0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(42),
+      font-weight: 500,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  h2: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(50),
+      font-weight: 500,
+      line-height: 1.2,
+      letter-spacing: -0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(32),
+      font-weight: 500,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  h3: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(42),
+      font-weight: 500,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(26),
+      font-weight: 500,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  h4: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(32),
+      font-weight: 700,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(24),
+      font-weight: 700,
+      line-height: 1.4,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  h5: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(24),
+      font-weight: 700,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(22),
+      font-weight: 700,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  h6: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(24),
+      font-weight: 500,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(22),
+      font-weight: 500,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  t1: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(24),
+      font-weight: 400,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(22),
+      font-weight: 400,
+      line-height: 1.3,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  t2: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(20),
+      font-weight: 500,
+      line-height: 1.4,
+      letter-spacing: 0.0000em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(20),
+      font-weight: 500,
+      line-height: 1.4,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  t3: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(20),
+      font-weight: 400,
+      line-height: 1.4,
+      letter-spacing: 0.0000em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(20),
+      font-weight: 400,
+      line-height: 1.4,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  t4: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(18),
+      font-weight: 500,
+      line-height: 1.4,
+      letter-spacing: 0.0000em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(18),
+      font-weight: 500,
+      line-height: 1.4,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  t5: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(18),
+      font-weight: 400,
+      line-height: 1.4,
+      letter-spacing: 0.0000em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(18),
+      font-weight: 400,
+      line-height: 1.4,
+      letter-spacing: 0.0000em
+    ),
+  ),
+  t6: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(16),
+      font-weight: 500,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(16),
+      font-weight: 500,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+  ),
+  t7: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(16),
+      font-weight: 400,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(16),
+      font-weight: 400,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+  ),
+  t8: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(14),
+      font-weight: 400,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(14),
+      font-weight: 400,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+  ),
+  t9: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(12),
+      font-weight: 700,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(12),
+      font-weight: 700,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+  ),
+  t10: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(16),
+      font-weight: 400,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(14),
+      font-weight: 400,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+  ),
+  t11: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(14),
+      font-weight: 400,
+      line-height: 1.5,
+      letter-spacing: 0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(12),
+      font-weight: 400,
+      line-height: 1,
+      letter-spacing: 0.0100em
+    ),
+  ),
+  cta1: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(18),
+      font-weight: 700,
+      line-height: 1.4,
+      letter-spacing: 0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(18),
+      font-weight: 700,
+      line-height: 1.4,
+      letter-spacing: 0.0100em
+    ),
+  ),
+  cta2: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(18),
+      font-weight: 700,
+      line-height: 1.4,
+      letter-spacing: 0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(18),
+      font-weight: 700,
+      line-height: 1.4,
+      letter-spacing: 0.0100em
+    ),
+  ),
+  cta3: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(14),
+      font-weight: 700,
+      line-height: 1.4,
+      letter-spacing: 0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(14),
+      font-weight: 700,
+      line-height: 1.4,
+      letter-spacing: 0.0100em
+    ),
+  ),
+  e1: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(18),
+      font-weight: 500,
+      line-height: 1.4,
+      letter-spacing: 0.0600em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(16),
+      font-weight: 500,
+      line-height: 1.5,
+      letter-spacing: 0.0600em
+    ),
+  ),
+  stat1: (
+    large: (
+      font-family: $font-reg,
+      font-size: rem(86),
+      font-weight: 400,
+      line-height: 1.1,
+      letter-spacing: -0.0100em
+    ),
+    small: (
+      font-family: $font-reg,
+      font-size: rem(70),
+      font-weight: 400,
+      line-height: 1.1,
+      letter-spacing: -0.0100em
+    ),
+  ),
+);

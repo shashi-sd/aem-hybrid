@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Network Dashboard"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+
+                    <!-- HEADER TAB -->
+                    <header jcr:primaryType="nt:unstructured"
+                        jcr:title="Header"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./title"
+                                                value="Network Operations"/>
+                                            <subtitle jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Subtitle"
+                                                name="./subtitle"
+                                                value="Real-time view across every POP you operate"/>
+                                            <badgeLabel jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Header Badge"
+                                                name="./badgeLabel"
+                                                value="LIVE"/>
+                                            <accentColor jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Accent Colour"
+                                                name="./accentColor">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <blue jcr:primaryType="nt:unstructured" text="Calix Blue" value="blue" selected="{Boolean}true"/>
+                                                    <teal jcr:primaryType="nt:unstructured" text="Teal"       value="teal"/>
+                                                    <violet jcr:primaryType="nt:unstructured" text="Violet"   value="violet"/>
+                                                </items>
+                                            </accentColor>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </header>
+
+                    <!-- KPI TILES TAB (multifield) -->
+                    <kpis jcr:primaryType="nt:unstructured"
+                        jcr:title="KPI Tiles"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <kpiList jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                fieldLabel="KPI Tiles"
+                                fieldDescription="Labels/units are authored; values arrive from servicedata.json"
+                                composite="{Boolean}true">
+                                <field jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./kpiList">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <key jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Metric Key"
+                                            name="./key">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <uptime jcr:primaryType="nt:unstructured" text="Uptime"          value="uptime"/>
+                                                <subscribers jcr:primaryType="nt:unstructured" text="Subscribers" value="subscribers"/>
+                                                <bandwidth jcr:primaryType="nt:unstructured" text="Bandwidth"    value="bandwidth"/>
+                                                <alerts jcr:primaryType="nt:unstructured" text="Alerts"          value="alerts"/>
+                                            </items>
+                                        </key>
+                                        <label jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Label"
+                                            name="./label"/>
+                                        <unit jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Unit / Suffix"
+                                            name="./unit"/>
+                                        <icon jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Icon (emoji)"
+                                            name="./icon"/>
+                                    </items>
+                                </field>
+                            </kpiList>
+                        </items>
+                    </kpis>
+
+                    <!-- FEATURES TAB (multifield) -->
+                    <features jcr:primaryType="nt:unstructured"
+                        jcr:title="Features"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <featureList jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                fieldLabel="Feature Highlights"
+                                composite="{Boolean}true">
+                                <field jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./featureList">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <title jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Title"
+                                            name="./title"/>
+                                        <description jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldLabel="Description"
+                                            name="./description"/>
+                                        <icon jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Icon (emoji)"
+                                            name="./icon"/>
+                                    </items>
+                                </field>
+                            </featureList>
+                        </items>
+                    </features>
+
+                    <!-- CTA TAB -->
+                    <cta jcr:primaryType="nt:unstructured"
+                        jcr:title="Call to Action"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <ctaLabel jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="CTA Label"
+                                                name="./ctaLabel"
+                                                value="Open Full Console"/>
+                                            <ctaLink jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="CTA Link"
+                                                name="./ctaLink"
+                                                value="#"/>
+                                            <footerNote jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Footer Note"
+                                                name="./footerNote"
+                                                value="Metrics refresh every 30 seconds"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </cta>
+
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
